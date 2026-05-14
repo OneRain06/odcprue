@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ODC | Oficina de Diseño y Construcción</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
 	  :root {
   /* Colores base */
@@ -1093,6 +1094,7 @@ nav.menu a:hover {
 
   /* Independizar Cotización */
 
+
   .cotizacion-content {
     grid-template-columns: 1fr;
     padding: 1.5rem;
@@ -1252,13 +1254,104 @@ nav.menu a:hover {
     height: 60px;
   }
 }
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #ff4757;
+  --bg-dark: #333;
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 250px;
+  right: 2px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  z-index: 99990;
+}
+
+#fab-checkbox { display: none; }
+
+/* Botón Principal */
+.fab-main {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 10;
+}
+
+/* Opciones de Redes */
+.fab-options {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none; /* Evita clics cuando está oculto */
+}
+
+.fab-btn {
+  width: 50px;
+  height: 50px;
+  background: var(--bg-dark);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  opacity: 0;
+  transform: scale(0) translateY(20px);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /* Retraso basado en la variable --i definida en el HTML */
+  transition-delay: calc(0.05s * var(--i)); 
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* --- Animaciones al activar --- */
+
+#fab-checkbox:checked ~ .fab-main {
+  background: var(--secondary-color);
+  transform: rotate(135deg);
+}
+
+#fab-checkbox:checked ~ .fab-options .fab-btn {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+/* Hover effects */
+.fab-btn:hover {
+  transform: scale(1.1) !important;
+  background: #555;
+}
+
+.fab-btn.facebook:hover { background: #3b5998; }
+.fab-btn.instagram:hover { background: #e1306c; }
+.fab-btn.whatsapp:hover { background: #25d366; }
   </style>
 </head>
 <body>
 
 <header>
   <a href="#inicio">
-  <img src="logo.webp" alt="ODC Logo" style="height:40px;">
+ <picture>
+  <!-- Imagen para pantallas grandes (PC) -->
+  <source srcset="logo-1.png" media="(min-width: 1200px)">
+  
+  <!-- Imagen por defecto (Mobile) -->
+  <img src="logo.webp" alt="ODC Logo" style="height:30px;">
+</picture>
 </a>
   <nav class="menu">
     <a href="#nosotros">Nosotros</a>
@@ -1269,7 +1362,21 @@ nav.menu a:hover {
   </nav>
   <button class="hamburger" aria-label="Abrir menú">☰</button>
 </header>
+	
+<div class="fab-container">
+  <input type="checkbox" id="fab-checkbox">
+  
+  <div class="fab-options">
+    <a href="#" class="fab-btn" style="--i:1"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="fab-btn" style="--i:2"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="fab-btn" style="--i:3"><i class="fab fa-whatsapp"></i></a>
+  </div>
 
+  <label for="fab-checkbox" class="fab-main">
+    <i class="fas fa-plus"></i>
+  </label>
+</div>
+	
 <section class="hero"  id="inicio">
   <!-- Slides de fondo -->
   <div class="hero-slide active" style="background-image:url('img1.webp');"></div>
@@ -1849,11 +1956,11 @@ nav.menu a:hover {
     </div>
     <div class="popup-section">
       <h3>PROCESO ODC · 5 ETAPAS</h3>
-      <div class="process-item"><span class="process-num">01</span><div class="process-info"><img src="servicio2-Briefing.jpg" class="process-img"><div><h4>Briefing & Levantamiento</h4><p>Reunión con el cliente, levantamiento del lote y análisis de necesidades, normativa y presupuesto objetivo.</p><div class="thumbs"><img src="servicio2-Briefing-thumb1.jpg"><img src="servicio2-Briefing-thumb2.jpg"></div></div></div></div>
-      <div class="process-item"><span class="process-num">02</span><div class="process-info"><img src="servicio2-cuantificacion.jpg" class="process-img"><div><h4>Anteproyecto</h4><p>Zonificación, volumetría, esquemas funcionales y primeras imágenes conceptuales para validación.</p><div class="thumbs"><img src="servicio2-Anteproyecto-thumb1.jpg"><img src="servicio2-Anteproyecto-thumb2.jpg"></div></div></div></div>
-      <div class="process-item"><span class="process-num">03</span><div class="process-info"><img src="servicio2-Modelado.jpg" class="process-img"><div><h4>Modelado BIM 3D</h4><p>Desarrollo del modelo arquitectónico en BIM con coordinación de especialidades técnicas.</p><div class="thumbs"><img src="servicio2-Modelado-thumb1.jpg"><img src="servicio2-Modelado-thumb2.jpg"></div></div></div></div>
-      <div class="process-item"><span class="process-num">04</span><div class="process-info"><img src="servicio2-Renders.jpg" class="process-img"><div><h4>Renders & Visualización</h4><p>Imágenes fotorrealistas interiores y exteriores, recorridos virtuales y material de presentación.</p><div class="thumbs"><img src="servicio2-Renders-thumb1.jpg"><img src="servicio2-Renders-thumb2.jpg"></div></div></div></div>
-      <div class="process-item"><span class="process-num">05</span><div class="process-info"><img src="servicio2-Planos.jpg" class="process-img"><div><h4>Planos para Construcción</h4><p>Entrega de planimetría arquitectónica, detalles constructivos y especificaciones técnicas.</p><div class="thumbs"><img src="servicio2-Planos-thumb1.jpg"><img src="servicio2-Planos-thumb2.jpg"></div></div></div></div>
+      <div class="process-item"><span class="process-num">01</span><div class="process-info"><img src="servicio2-Briefing.png" class="process-img"><div><h4>Briefing & Levantamiento</h4><p>Reunión con el cliente, levantamiento del lote y análisis de necesidades, normativa y presupuesto objetivo.</p><div class="thumbs"><img src="servicio2-Briefing.png"><img src="servicio2-Briefing-thumb1.png"><img src="servicio2-Briefing-thumb2.png"></div></div></div></div>
+      <div class="process-item"><span class="process-num">02</span><div class="process-info"><img src="servicio2-Anteproyecto.png" class="process-img"><div><h4>Anteproyecto</h4><p>Zonificación, volumetría, esquemas funcionales y primeras imágenes conceptuales para validación.</p><div class="thumbs"><img src="servicio2-Anteproyecto.png"><img src="servicio2-Anteproyecto-thumb1.png"><img src="servicio2-Anteproyecto-thumb2.png"></div></div></div></div>
+      <div class="process-item"><span class="process-num">03</span><div class="process-info"><img src="servicio2-Modelado.png" class="process-img"><div><h4>Modelado BIM 3D</h4><p>Desarrollo del modelo arquitectónico en BIM con coordinación de especialidades técnicas.</p><div class="thumbs"><img src="servicio2-Modelado.png"><img src="servicio2-Modelado-thumb1.png"><img src="servicio2-Modelado-thumb2.png"></div></div></div></div>
+      <div class="process-item"><span class="process-num">04</span><div class="process-info"><img src="servicio2-Renders.png" class="process-img"><div><h4>Renders & Visualización</h4><p>Imágenes fotorrealistas interiores y exteriores, recorridos virtuales y material de presentación.</p><div class="thumbs"><img src="servicio2-Renders.png"><img src="servicio2-Renders-thumb1.png"><img src="servicio2-Renders-thumb2.png"></div></div></div></div>
+      <div class="process-item"><span class="process-num">05</span><div class="process-info"><img src="servicio2-Planos.png" class="process-img"><div><h4>Planos para Construcción</h4><p>Entrega de planimetría arquitectónica, detalles constructivos y especificaciones técnicas.</p><div class="thumbs"><img src="servicio2-Planos.png"><img src="servicio2-Planos-thumb1.png"><img src="servicio2-Planos-thumb2.png"></div></div></div></div>
     </div>
     <a href="#" class="cta">COTIZAR ESTE SERVICIO →</a>
   </div>
@@ -1868,11 +1975,11 @@ nav.menu a:hover {
     </div>
     <div class="popup-section">
       <h3>PROCESO ODC · 5 ETAPAS</h3>
-      <div class="process-item"><span class="process-num">01</span><div class="process-info"><img src="servicio2-lectura.jpg" class="process-img"><div><h4>Lectura de planos</h4><p>Revisión técnica de planos arquitectónicos, estructurales y de redes para detectar inconsistencias.</p><div class="thumbs"><img src="servicio2-lectura-thumb1.jpg"><img src="servicio2-lectura-thumb2.jpg"></div></div></div></div>
-      <div class="process-item"><span class="process-num">02</span><div class="process-info"><img src="servicio2-cuantificacion.jpg" class="process-img"><div><h4>Cuantificación</h4><p>Medición detallada de cantidades de obra por capítulos y subcapítulos.</p><div class="thumbs"><img src="servicio2-cuantificacion-thumb1.jpg"><img src="servicio2-cuantificacion-thumb2.jpg"></div></div></div></div>
-      <div class="process-item"><span class="process-num">03</span><div class="process-info"><img src="servicio2-apu.jpg" class="process-img"><div><h4>Análisis de precios unitarios</h4><p>Construcción de APU con materiales, mano de obra, equipo y rendimientos actualizados.</p><div class="thumbs"><img src="servicio2-apu-thumb1.jpg"><img src="servicio2-apu-thumb2.jpg"></div></div></div></div>
-      <div class="process-item"><span class="process-num">04</span><div class="process-info"><img src="servicio2-presupuesto.jpg" class="process-img"><div><h4>Presupuesto maestro</h4><p>Consolidación del presupuesto con AIU, imprevistos y resumen ejecutivo.</p><div class="thumbs"><img src="servicio2-presupuesto-thumb1.jpg"><img src="servicio2-presupuesto-thumb2.jpg"></div></div></div></div>
-      <div class="process-item"><span class="process-num">05</span><div class="process-info"><img src="servicio2-cronograma.jpg" class="process-img"><div><h4>Cronograma & flujo de caja</h4><p>Programación tipo Gantt, ruta crítica y proyección de desembolsos.</p><div class="thumbs"><img src="servicio2-cronograma-thumb1.jpg"><img src="servicio2-cronograma-thumb2.jpg"></div></div></div></div>
+      <div class="process-item"><span class="process-num">01</span><div class="process-info"><img src="servicio2-lectura.png" class="process-img"><div><h4>Lectura de planos</h4><p>Revisión técnica de planos arquitectónicos, estructurales y de redes para detectar inconsistencias.</p><div class="thumbs"><img src="servicio2-lectura.png"><img src="servicio2-lectura-thumb1.png"><img src="servicio2-lectura-thumb2.png"></div></div></div></div>
+      <div class="process-item"><span class="process-num">02</span><div class="process-info"><img src="servicio2-cuantificacion.png" class="process-img"><div><h4>Cuantificación</h4><p>Medición detallada de cantidades de obra por capítulos y subcapítulos.</p><div class="thumbs"><img src="servicio2-cuantificacion.png"><img src="servicio2-cuantificacion-thumb1.png"><img src="servicio2-cuantificacion-thumb2.png"></div></div></div></div>
+      <div class="process-item"><span class="process-num">03</span><div class="process-info"><img src="servicio2-apu.png" class="process-img"><div><h4>Análisis de precios unitarios</h4><p>Construcción de APU con materiales, mano de obra, equipo y rendimientos actualizados.</p><div class="thumbs"><img src="servicio2-apu.png"><img src="servicio2-apu-thumb1.png"><img src="servicio2-apu-thumb2.png"></div></div></div></div>
+      <div class="process-item"><span class="process-num">04</span><div class="process-info"><img src="servicio2-presupuesto.png" class="process-img"><div><h4>Presupuesto maestro</h4><p>Consolidación del presupuesto con AIU, imprevistos y resumen ejecutivo.</p><div class="thumbs"><img src="servicio2-presupuesto.png"><img src=" 1.png"><img src="servicio2-presupuesto-thumb2.png"></div></div></div></div>
+      <div class="process-item"><span class="process-num">05</span><div class="process-info"><img src="servicio2-cronograma.png" class="process-img"><div><h4>Cronograma & flujo de caja</h4><p>Programación tipo Gantt, ruta crítica y proyección de desembolsos.</p><div class="thumbs"><img src="servicio2-cronograma.png"><img src="servicio2-cronograma-thumb1.png"><img src="servicio2-cronograma-thumb2.png"></div></div></div></div>
     </div>
     <a href="#" class="cta">COTIZAR ESTE SERVICIO →</a>
   </div>
@@ -1899,13 +2006,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">01</span>
         <div class="process-info">
-          <img src="servicio3-preliminares.jpg" class="process-img" alt="Preliminares & Cerramiento">
+          <img src="servicio3-preliminares.png" class="process-img" alt="Preliminares & Cerramiento">
           <div>
             <h4>Preliminares & Cerramiento</h4>
             <p>Instalación de campamento, cerramiento del predio y trazado topográfico.</p>
             <div class="thumbs">
-              <img src="servicio3-preliminares-thumb1.jpg">
-              <img src="servicio3-preliminares-thumb2.jpg">
+              <img src="servicio3-preliminares.png">
+              <img src="servicio3-preliminares-thumb1.png">
+              <img src="servicio3-preliminares-thumb2.png">
             </div>
           </div>
         </div>
@@ -1915,13 +2023,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">02</span>
         <div class="process-info">
-          <img src="servicio3-cimentacion.jpg" class="process-img" alt="Cimentación & Estructura">
+          <img src="servicio3-cimentacion.png" class="process-img" alt="Cimentación & Estructura">
           <div>
             <h4>Cimentación & Estructura</h4>
             <p>Excavaciones, cimentación y montaje de estructura metálica o concreto.</p>
             <div class="thumbs">
-              <img src="servicio3-cimentacion-thumb1.jpg">
-              <img src="servicio3-cimentacion-thumb2.jpg">
+              <img src="servicio3-cimentacion.png">
+              <img src="servicio3-cimentacion-thumb1.png">
+              <img src="servicio3-cimentacion-thumb2.png">
             </div>
           </div>
         </div>
@@ -1931,13 +2040,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">03</span>
         <div class="process-info">
-          <img src="servicio3-mamposteria.jpg" class="process-img" alt="Mampostería & Drywall">
+          <img src="servicio3-mamposteria.png" class="process-img" alt="Mampostería & Drywall">
           <div>
             <h4>Mampostería & Drywall</h4>
             <p>Levantamiento de muros, divisiones livianas y cielorrasos.</p>
             <div class="thumbs">
-              <img src="servicio3-mamposteria-thumb1.jpg">
-              <img src="servicio3-mamposteria-thumb2.jpg">
+              <img src="servicio3-mamposteria.png">
+              <img src="servicio3-mamposteria-thumb1.png">
+              <img src="servicio3-mamposteria-thumb2.png">
             </div>
           </div>
         </div>
@@ -1947,13 +2057,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">04</span>
         <div class="process-info">
-          <img src="servicio3-redes.jpg" class="process-img" alt="Redes MEP">
+          <img src="servicio3-redes.png" class="process-img" alt="Redes MEP">
           <div>
             <h4>Redes MEP</h4>
             <p>Instalaciones eléctricas, hidrosanitarias, gas, climatización, CCTV y automatización.</p>
             <div class="thumbs">
-              <img src="servicio3-redes-thumb1.jpg">
-              <img src="servicio3-redes-thumb2.jpg">
+              <img src="servicio3-redes.png">
+              <img src="servicio3-redes-thumb1.png">
+              <img src="servicio3-redes-thumb2.png">
             </div>
           </div>
         </div>
@@ -1963,13 +2074,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">05</span>
         <div class="process-info">
-          <img src="servicio3-fachadas.jpg" class="process-img" alt="Fachadas & Acabados">
+          <img src="servicio3-fachadas.png" class="process-img" alt="Fachadas & Acabados">
           <div>
             <h4>Fachadas & Acabados</h4>
             <p>Enchapes, pisos, carpintería, pintura, fachadas y acabados de alta gama.</p>
             <div class="thumbs">
-              <img src="servicio3-fachadas-thumb1.jpg">
-              <img src="servicio3-fachadas-thumb2.jpg">
+              <img src="servicio3-fachadas.png">
+              <img src="servicio3-fachadas-thumb1.png">
+              <img src="servicio3-fachadas-thumb2.png">
             </div>
           </div>
         </div>
@@ -1979,13 +2091,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">06</span>
         <div class="process-info">
-          <img src="servicio3-entrega.jpg" class="process-img" alt="Entrega & Puesta en marcha">
+          <img src="servicio3-entrega.png" class="process-img" alt="Entrega & Puesta en marcha">
           <div>
             <h4>Entrega & Puesta en marcha</h4>
             <p>Pruebas, manuales, planos record y entrega formal al cliente.</p>
             <div class="thumbs">
-              <img src="servicio3-entrega-thumb1.jpg">
-              <img src="servicio3-entrega-thumb2.jpg">
+              <img src="servicio3-entrega.png">
+              <img src="servicio3-entrega-thumb1.png">
+              <img src="servicio3-entrega-thumb2.png">
             </div>
           </div>
         </div>
@@ -2018,13 +2131,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">01</span>
         <div class="process-info">
-          <img src="servicio4-plan.jpg" class="process-img" alt="Plan de gerencia">
+          <img src="servicio4-plan.png" class="process-img" alt="Plan de gerencia">
           <div>
             <h4>Plan de gerencia</h4>
             <p>Definición de alcance, organización del equipo, matriz de responsabilidades y plan de comunicaciones.</p>
             <div class="thumbs">
-              <img src="servicio4-plan-thumb1.jpg">
-              <img src="servicio4-plan-thumb2.jpg">
+              <img src="servicio4-plan.png">
+              <img src="servicio4-plan-thumb1.png">
+              <img src="servicio4-plan-thumb2.png">
             </div>
           </div>
         </div>
@@ -2034,13 +2148,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">02</span>
         <div class="process-info">
-          <img src="servicio4-contratacion.jpg" class="process-img" alt="Contratación & Compras">
+          <img src="servicio4-contratacion.png" class="process-img" alt="Contratación & Compras">
           <div>
             <h4>Contratación & Compras</h4>
             <p>Selección de proveedores, contratación de subcontratistas y gestión de adquisiciones.</p>
             <div class="thumbs">
-              <img src="servicio4-contratacion-thumb1.jpg">
-              <img src="servicio4-contratacion-thumb2.jpg">
+              <img src="servicio4-contratacion.png">
+              <img src="servicio4-contratacion-thumb1.png">
+              <img src="servicio4-contratacion-thumb2.png">
             </div>
           </div>
         </div>
@@ -2050,13 +2165,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">03</span>
         <div class="process-info">
-          <img src="servicio4-supervision.jpg" class="process-img" alt="Supervisión técnica">
+          <img src="servicio4-supervision.png" class="process-img" alt="Supervisión técnica">
           <div>
             <h4>Supervisión técnica</h4>
             <p>Interventoría diaria de calidad, seguridad y cumplimiento de especificaciones.</p>
             <div class="thumbs">
-              <img src="servicio4-supervision-thumb1.jpg">
-              <img src="servicio4-supervision-thumb2.jpg">
+              <img src="servicio4-supervision.png">
+              <img src="servicio4-supervision-thumb1.png">
+              <img src="servicio4-supervision-thumb2.png">
             </div>
           </div>
         </div>
@@ -2066,13 +2182,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">04</span>
         <div class="process-info">
-          <img src="servicio4-control.jpg" class="process-img" alt="Control de costos & tiempo">
+          <img src="servicio4-control.png" class="process-img" alt="Control de costos & tiempo">
           <div>
             <h4>Control de costos & tiempo</h4>
             <p>Seguimiento del presupuesto, cronograma, actas parciales y manejo de cambios.</p>
             <div class="thumbs">
-              <img src="servicio4-control-thumb1.jpg">
-              <img src="servicio4-control-thumb2.jpg">
+              <img src="servicio4-control.png">
+              <img src="servicio4-control-thumb1.png">
+              <img src="servicio4-control-thumb2.png">
             </div>
           </div>
         </div>
@@ -2082,13 +2199,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">05</span>
         <div class="process-info">
-          <img src="servicio4-reportes.jpg" class="process-img" alt="Reportes & Cierre">
+          <img src="servicio4-reportes.png" class="process-img" alt="Reportes & Cierre">
           <div>
             <h4>Reportes & Cierre</h4>
             <p>Informes semanales al cliente, gestión documental legal y cierre administrativo del proyecto.</p>
             <div class="thumbs">
-              <img src="servicio4-reportes-thumb1.jpg">
-              <img src="servicio4-reportes-thumb2.jpg">
+              <img src="servicio4-reportes.png">
+              <img src="servicio4-reportes-thumb1.png">
+              <img src="servicio4-reportes-thumb2.png">
             </div>
           </div>
         </div>
@@ -2122,13 +2240,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">01</span>
         <div class="process-info">
-          <img src="servicio5-diagnostico.jpg" class="process-img" alt="Diagnóstico inicial">
+          <img src="servicio5-diagnostico.png" class="process-img" alt="Diagnóstico inicial">
           <div>
             <h4>Diagnóstico inicial</h4>
             <p>Inspección técnica del inmueble e identificación de puntos críticos a monitorear.</p>
             <div class="thumbs">
-              <img src="servicio5-diagnostico-thumb1.jpg">
-              <img src="servicio5-diagnostico-thumb2.jpg">
+              <img src="servicio5-diagnostico.png">
+              <img src="servicio5-diagnostico-thumb1.png">
+              <img src="servicio5-diagnostico-thumb2.png">
             </div>
           </div>
         </div>
@@ -2138,13 +2257,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">02</span>
         <div class="process-info">
-          <img src="servicio5-plan.jpg" class="process-img" alt="Plan de mantenimiento">
+          <img src="servicio5-plan.png" class="process-img" alt="Plan de mantenimiento">
           <div>
             <h4>Plan de mantenimiento</h4>
             <p>Cronograma personalizado de visitas preventivas según uso y tipo de instalaciones.</p>
             <div class="thumbs">
-              <img src="servicio5-plan-thumb1.jpg">
-              <img src="servicio5-plan-thumb2.jpg">
+              <img src="servicio5-plan.png">
+              <img src="servicio5-plan-thumb1.png">
+              <img src="servicio5-plan-thumb2.png">
             </div>
           </div>
         </div>
@@ -2154,13 +2274,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">03</span>
         <div class="process-info">
-          <img src="servicio5-visitas1.jpg" class="process-img" alt="Visitas semanales (Mes 1)">
+          <img src="servicio5-visitas1.png" class="process-img" alt="Visitas semanales (Mes 1)">
           <div>
             <h4>Visitas semanales (Mes 1)</h4>
             <p>Acompañamiento intensivo durante el primer mes para ajustes finos post-entrega.</p>
             <div class="thumbs">
-              <img src="servicio5-visitas1-thumb1.jpg">
-              <img src="servicio5-visitas1-thumb2.jpg">
+              <img src="servicio5-visitas1.png">
+              <img src="servicio5-visitas1-thumb1.png">
+              <img src="servicio5-visitas1-thumb2.png">
             </div>
           </div>
         </div>
@@ -2170,13 +2291,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">04</span>
         <div class="process-info">
-          <img src="servicio5-visitas2.jpg" class="process-img" alt="Visitas trimestrales (Año 1)">
+          <img src="servicio5-visitas2.png" class="process-img" alt="Visitas trimestrales (Año 1)">
           <div>
             <h4>Visitas trimestrales (Año 1)</h4>
             <p>Inspecciones programadas durante el primer año cubiertas por la garantía.</p>
             <div class="thumbs">
-              <img src="servicio5-visitas2-thumb1.jpg">
-              <img src="servicio5-visitas2-thumb2.jpg">
+              <img src="servicio5-visitas2.png">
+              <img src="servicio5-visitas2-thumb1.png">
+              <img src="servicio5-visitas2-thumb2.png">
             </div>
           </div>
         </div>
@@ -2186,13 +2308,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">05</span>
         <div class="process-info">
-          <img src="servicio5-correctivo.jpg" class="process-img" alt="Atención correctiva">
+          <img src="servicio5-correctivo.png" class="process-img" alt="Atención correctiva">
           <div>
             <h4>Atención correctiva</h4>
             <p>Respuesta rápida ante cualquier eventualidad bajo cobertura de garantía.</p>
             <div class="thumbs">
-              <img src="servicio5-correctivo-thumb1.jpg">
-              <img src="servicio5-correctivo-thumb2.jpg">
+              <img src="servicio5-correctivo.png">
+              <img src="servicio5-correctivo-thumb1.png">
+              <img src="servicio5-correctivo-thumb2.png">
             </div>
           </div>
         </div>
@@ -2227,13 +2350,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">01</span>
         <div class="process-info">
-          <img src="servicio6-estudios.jpg" class="process-img" alt="Estudios previos">
+          <img src="servicio6-estudios.png" class="process-img" alt="Estudios previos">
           <div>
             <h4>Estudios previos</h4>
             <p>Estudio de suelos, topografía, normativa urbanística y factibilidad del proyecto.</p>
             <div class="thumbs">
-              <img src="servicio6-estudios-thumb1.jpg">
-              <img src="servicio6-estudios-thumb2.jpg">
+              <img src="servicio6-estudios.png">
+              <img src="servicio6-estudios-thumb1.png">
+              <img src="servicio6-estudios-thumb2.png">
             </div>
           </div>
         </div>
@@ -2243,13 +2367,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">02</span>
         <div class="process-info">
-          <img src="servicio6-licencias.jpg" class="process-img" alt="Diseño & Licencias">
+          <img src="servicio6-licencias.png" class="process-img" alt="Diseño & Licencias">
           <div>
             <h4>Diseño & Licencias</h4>
             <p>Desarrollo arquitectónico y trámite de licencias de construcción y urbanismo.</p>
             <div class="thumbs">
-              <img src="servicio6-licencias-thumb1.jpg">
-              <img src="servicio6-licencias-thumb2.jpg">
+              <img src="servicio6-licencias.png">
+              <img src="servicio6-licencias-thumb1.png">
+              <img src="servicio6-licencias-thumb2.png">
             </div>
           </div>
         </div>
@@ -2259,13 +2384,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">03</span>
         <div class="process-info">
-          <img src="servicio6-urbanizacion.jpg" class="process-img" alt="Urbanización & Redes">
+          <img src="servicio6-urbanizacion.png" class="process-img" alt="Urbanización & Redes">
           <div>
             <h4>Urbanización & Redes</h4>
             <p>Vías, andenes, redes hidrosanitarias, eléctricas y gas del conjunto.</p>
             <div class="thumbs">
-              <img src="servicio6-urbanizacion-thumb1.jpg">
-              <img src="servicio6-urbanizacion-thumb2.jpg">
+              <img src="servicio6-urbanizacion.png">
+              <img src="servicio6-urbanizacion-thumb1.png">
+              <img src="servicio6-urbanizacion-thumb2.png">
             </div>
           </div>
         </div>
@@ -2275,13 +2401,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">04</span>
         <div class="process-info">
-          <img src="servicio6-vivienda.jpg" class="process-img" alt="Construcción de vivienda">
+          <img src="servicio6-vivienda.png" class="process-img" alt="Construcción de vivienda">
           <div>
             <h4>Construcción de vivienda</h4>
             <p>Cimentación, estructura, mampostería y acabados de las unidades habitacionales.</p>
             <div class="thumbs">
-              <img src="servicio6-vivienda-thumb1.jpg">
-              <img src="servicio6-vivienda-thumb2.jpg">
+              <img src="servicio6-vivienda.png">
+              <img src="servicio6-vivienda-thumb1.png">
+              <img src="servicio6-vivienda-thumb2.png">
             </div>
           </div>
         </div>
@@ -2291,13 +2418,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">05</span>
         <div class="process-info">
-          <img src="servicio6-domotica.jpg" class="process-img" alt="Domótica & Smart Home">
+          <img src="servicio6-domotica.png" class="process-img" alt="Domótica & Smart Home">
           <div>
             <h4>Domótica & Smart Home</h4>
             <p>Integración de automatización, control de iluminación, CCTV y accesos.</p>
             <div class="thumbs">
-              <img src="servicio6-domotica-thumb1.jpg">
-              <img src="servicio6-domotica-thumb2.jpg">
+              <img src="servicio6-domotica.png">
+              <img src="servicio6-domotica-thumb1.png">
+              <img src="servicio6-domotica-thumb2.png">
             </div>
           </div>
         </div>
@@ -2307,13 +2435,14 @@ nav.menu a:hover {
       <div class="process-item">
         <span class="process-num">06</span>
         <div class="process-info">
-          <img src="servicio6-paisajismo.jpg" class="process-img" alt="Paisajismo & Entrega">
+          <img src="servicio6-paisajismo.png" class="process-img" alt="Paisajismo & Entrega">
           <div>
             <h4>Paisajismo & Entrega</h4>
             <p>Zonas verdes, cerramientos, mobiliario exterior y entrega formal al propietario.</p>
             <div class="thumbs">
-              <img src="servicio6-paisajismo-thumb1.jpg">
-              <img src="servicio6-paisajismo-thumb2.jpg">
+              <img src="servicio6-paisajismo.png">
+              <img src="servicio6-paisajismo-thumb1.png">
+              <img src="servicio6-paisajismo-thumb2.png">
             </div>
           </div>
         </div>
