@@ -1,0 +1,3001 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ODC | Oficina de Diseño y Construcción</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+	  :root {
+  /* Colores base */
+  --color-dark-blue: #002a4c;
+  --color-light-blue: #2680bc;
+  --color-dark-gray: #1d2222;
+  --color-light-gray: #f7f7f7;
+
+  /* Degradados */
+  --gradient-horizontal: linear-gradient(
+    to right,
+    var(--color-dark-blue),
+    var(--color-light-blue)
+  );
+
+  --gradient-vertical: linear-gradient(
+    to bottom,
+    var(--color-light-blue),
+    var(--color-dark-blue)
+  );
+
+  --gradient-diagonal: linear-gradient(
+    135deg,
+    var(--color-dark-gray),
+    var(--color-light-gray)
+  );
+}
+
+    body {
+      margin:0; font-family:'Montserrat', sans-serif;
+      background:#f9f9f9; color:var(--color-dark-gray);
+    }
+
+    /* HEADER */
+header {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:1rem 2rem; border-bottom:1px solid var(--color-light-gray);
+    background:rgba(255,255,255,0.95); backdrop-filter:blur(6px);
+    position:sticky; top:0; z-index:1000;
+  }
+  nav.menu {
+    display:flex; gap:1rem;
+  }
+  .cta1 {
+    background:var(--color-light-blue);
+    color:var(--color-light-gray); padding:0.5rem 1rem; border-radius:4px;
+    font-size:0.75rem; letter-spacing:0.1em;
+  }
+  nav.menu a {
+    color:var(--color-dark-gray); text-decoration:none; font-size:0.85rem;
+    letter-spacing:0.1em; transition:color 0.3s;
+  }
+  nav.menu a:hover {color:var(--color-light-blue));}
+
+  /* Botón hamburguer */
+  .hamburger {
+    display:none; font-size:1.5rem; background:var(--color-light-blue); color:var(--color-light-gray);
+    border:none; padding:0.5rem 0.8rem; border-radius:4px;
+    cursor:pointer; position:fixed; top:1rem; right:1rem; z-index:1100;
+    transition:background 0.3s;
+  }
+  .hamburger:hover {background:var(--color-dark-blue);}
+
+    /* HERO */
+    .hero {
+      position:relative; min-height:90vh; display:flex; align-items:center;
+      color:var(--color-light-gray);
+    }
+    .hero-slide {
+      position:absolute; inset:0; background-size:cover; background-position:center;
+      opacity:0; transition:opacity 1s ease;
+    }
+    .hero-slide.active {opacity:1;}
+    .hero-overlay {
+      position:absolute; inset:0; background:rgba(0,0,0,0.65);
+    }
+    .hero-content {
+      position:relative; z-index:2; max-width:900px; padding:3rem;
+    }
+    .hero-content h1 {
+		font-size:3rem; line-height:1.1; margin-bottom:1rem; font-weight:800;
+    }
+    .hero-content h1 span {color:var(--color-light-blue);}
+    .hero-content p {
+      color:var(--color-light-gray); max-width:50ch; margin-bottom:2rem; font-size:1rem; line-height:1.6;
+    }
+    .hero-content .buttons a {
+      border:1px solid var(--color-light-gray); padding:0.8rem 1.5rem; margin-right:1rem;
+      text-transform:uppercase; font-size:0.8rem; color:var(--color-light-gray);
+      transition:all 0.3s ease; text-decoration:none;
+    }
+    .hero-content .buttons a:hover {background:var(--color-light-blue); color:var(--color-light-gray);}
+
+    /* MÉTRICAS */
+    .metrics {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+      margin-top:2rem; gap:1rem;
+    }
+    .metrics div {
+      padding:1rem; text-align:center;
+    }
+    .metrics h4 {color:var(--color-dark-gray); font-size:0.7rem; margin-bottom:0.5rem; letter-spacing:0.1em;}
+    .metrics p {font-size:2.5rem; font-weight:700; color:var(--color-dark-gray);}
+
+
+	  /* Contenedor general */
+.nosotros {
+  padding:5rem 2rem -2rem ;
+  background:var(--color-light-gray);
+  color:var(--color-dark-gray);
+  max-width:80%;   
+  margin: auto;    
+}
+
+/* Grids */
+.grid-nosotros, .grid-clientes {
+  display:grid;
+  grid-template-columns:150px 2fr;
+  gap:2rem;
+  margin-bottom:4rem;
+}
+
+.section-num {
+  font-size:0.9rem;
+  color:var(--color-light-blue);
+  letter-spacing:0.15em;
+  font-weight:600;
+}
+
+h2 {
+  font-size:2.2rem;
+  font-weight:800;
+  margin-bottom:1rem;
+}
+h2 span {color:var(--color-light-blue);}
+p {color:var(--color-dark-gray); font-size:1rem; line-height:1.5;}
+
+/* Fases en fila */
+.fases {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1.5rem;
+  margin-top:2rem;
+}
+.fase {
+  background:#fff;
+  padding:1.5rem;
+  border:1px solid #eee;
+  border-radius:8px;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+.fase:hover {
+  transform:translateY(-5px);
+  box-shadow:0 6px 16px rgba(0,114,255,0.15);
+}
+.fase h3 {
+  color:var(--color-light-blue);
+  font-size:0.9rem;
+  margin-bottom:0.5rem;
+}
+.fase h4 {
+  font-size:1.2rem;
+  font-weight:600;
+  margin-bottom:0.5rem;
+}
+.detalle {
+  margin-top:0.5rem;
+  background:none;
+  border:none;
+  color: var(--color-light-blue);
+  font-size:0.85rem;
+  cursor:pointer;
+}
+
+/* Carrusel infinito */
+.carousel-wrapper {
+  width:100%;             /* ocupa todo el ancho disponible */
+  max-width:1000px; /* AJUSTA este valor manualmente según lo que quieras mostrar */
+  margin: auto;          /* centrado */
+  overflow:hidden;        /* oculta desbordes */
+  position:relative;
+}
+.carousel {
+  width:100%;
+  position:relative;
+}
+.track {
+  display:flex;
+  gap:3rem;
+  flex-wrap:nowrap;       /* evita que los logos bajen de línea */
+  min-width:200%;         /* asegura espacio para animación infinita */
+  animation:scroll 40s linear infinite;
+}
+.track img {
+  height:60px;
+  flex-shrink:0;          /* evita que se compriman */
+  filter:grayscale(100%) opacity(0.6);
+  transition:filter 0.3s, transform 0.3s;
+}
+.track img:hover {
+  filter:grayscale(0%) opacity(1);
+  transform:scale(1.2);
+}
+@keyframes scroll {
+  from {transform:translateX(0);}
+  to {transform:translateX(-50%);}
+}
+
+/* Degradados laterales */
+.fade-left, .fade-right {
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:80px;
+  z-index:10;
+  pointer-events:none;
+}
+.fade-left {left:0; background:linear-gradient(to right, var(--color-light-gray), transparent);}
+.fade-right {right:0; background:linear-gradient(to left, var(--color-light-gray), transparent);}
+
+/* --- POPUPS BASE --- */
+.popup {
+  display: none; /* Se activa con JS */
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85); /* Un poco más oscuro para centrar la atención */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999999;
+  backdrop-filter: blur(5px); /* Efecto moderno de desenfoque al fondo */
+  padding: 1rem; /* Margen de seguridad para que el popup no toque los bordes del navegador */
+}
+
+.popup-content {
+  background: var(--color-light-gray);
+  color: var(--color-dark-gray);
+  padding: 3rem 2rem 2rem; /* Más espacio arriba para la X */
+  border-radius: 16px; /* Bordes más redondeados y modernos */
+  max-width: 850px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  
+  /* Scroll suave en iOS */
+  -webkit-overflow-scrolling: touch; 
+}
+
+/* Botón de cierre mejorado */
+.popup .close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--color-dark-gray);
+  transition: transform 0.2s, color 0.2s;
+  z-index: 10;
+  padding: 0.5rem; /* Área de clic más grande para dedos */
+}
+
+.popup .close:hover {
+  color: var(--color-light-blue);
+  transform: scale(1.1);
+}
+
+/* Header del Popup */
+.popup-header h2 {
+  font-size: clamp(1.5rem, 5vw, 2.2rem); /* Tamaño fluido */
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--color-dark-blue);
+}
+
+/* Proceso */
+.process-item {
+  display:flex;
+  align-items:flex-start;
+  gap:1rem;
+  margin-bottom:1.5rem;
+}
+.process-num {
+  font-weight:700;
+  color:var(--color-light-blue) ;
+  font-size:1.2rem;
+  min-width:2rem;
+}
+.process-info {
+  display:flex;
+  gap:1rem;
+}
+.process-img {
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:6px;
+}
+.thumbs {
+  display:flex;
+  gap:0.5rem;
+  margin-top:0.5rem;
+}
+.thumbs img {
+  width:50px;
+  height:50px;
+  object-fit:cover;
+  border-radius:4px;
+  cursor:pointer;
+  transition:transform 0.2s;
+}
+.thumbs img:hover {transform:scale(1.1);}
+
+/* Entregables */
+.deliverables-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+}
+.deliverables-grid ul {list-style:none; padding-left:0;}
+.deliverables-grid li {
+  position:relative;
+  padding-left:1.2rem;
+  margin-bottom:0.5rem;
+}
+.deliverables-grid li::before {
+  content:"►";
+  position:absolute;
+  left:0;
+  color:var(--color-light-blue) ;
+}
+
+/* CTA */
+.cta {
+  display:inline-block;
+  margin-top:1rem;
+  color:var(--color-light-blue) ;
+  font-weight:600;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+.cta:hover {text-decoration:underline;}
+
+/* Modal de imagen */
+.img-modal {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.8);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999999999;
+}
+.img-box {position:relative;}
+.img-box img {
+  max-width:90vw;
+  max-height:90vh;
+  border-radius:8px;
+}
+.img-close {
+  position:absolute;
+  top:1rem;
+  right:1rem;
+  font-size:2rem;
+  color:var(--color-light-gray);
+  cursor:pointer;
+}
+
+/* --- SECCIÓN SERVICIOS --- */
+	  
+.servicios {
+  padding: 6rem 5%; /* Aumentado para dar aire */
+  background: var(--color-light-gray);
+  color: var(--color-dark-gray);
+  overflow: hidden;
+}
+
+.contenedor-servicios {
+  max-width: 65%;
+  margin: 0 auto;
+}
+
+/* Header con numeración a la izquierda */
+.grid-servicios {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  align-items: start;
+}
+
+.section-num {
+  font-size: 0.9rem;
+  color: var(--color-light-blue);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding-top: 0.5rem; /* Alineación visual con el H2 */
+}
+
+.grid-servicios h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+
+.grid-servicios .subtitle {
+  color: var(--color-dark-gray);
+  font-size: 0.95rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+/* Tarjetas de servicios */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.servicio-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column; /* Para alinear el botón al final */
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.servicio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 42, 76, 0.1);
+  border-color: var(--color-light-blue);
+}
+
+.servicio-num {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--color-light-blue);
+  margin-bottom: 1rem;
+  display: block;
+  opacity: 0.6;
+}
+
+.servicio-card h3 {
+  color: var(--color-dark-blue); /* Cambiado para contraste */
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.servicio-card p {
+  color: var(--color-dark-gray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Empuja los tags y el botón abajo */
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tags span {
+  background: rgba(38, 128, 188, 0.1); /* Fondo suave */
+  color: var(--color-light-blue);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.detalle {
+  background: none;
+  border: none;
+  color: var(--color-light-blue);
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-align: left;
+  transition: color 0.3s;
+}
+
+.detalle:hover {
+  color: var(--color-dark-blue);
+  text-decoration: underline;
+}
+
+	  
+	  
+.contenedor-portafolio {
+  max-width:80%; /* contenedor central */
+  margin:0 auto;
+  padding:2rem;
+}
+
+.section-header {
+  display:flex;
+  align-items:flex-start;
+  gap:2rem;
+  margin-bottom:2rem;
+}
+.section-num {
+  font-size:0.9rem;
+  font-weight:600;
+  color:var(--color-light-blue);
+  letter-spacing:0.1em;
+  flex:0 0 150px; /* ancho fijo a la izquierda */
+}
+.section-text h2 {
+  font-size:2.2rem;
+  font-weight:800;
+  text-transform:uppercase;
+  margin-bottom:0.5rem;
+}
+.section-text .subtitle {
+  color:var(--color-dark-gray);
+  font-size:0.95rem;
+}
+
+.proyectos-grid {
+  display:grid;
+  grid-template-columns:repeat(5,1fr); /* 5 columnas en PC */
+  gap:1.5rem;
+}
+
+.proyecto-card {
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:12px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+.proyecto-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 6px 16px rgba(0,114,255,0.15);
+}
+
+.proyecto-img {
+  position:relative;
+}
+.proyecto-img img {
+  width:100%;
+  aspect-ratio:1080/1368;
+  object-fit:cover;
+  display:block;
+}
+
+/* Overlay arriba izquierda */
+.overlay-top-left {
+  position:absolute;
+  top:0.5rem;
+  left:0.5rem;
+  background:rgba(0,0,0,0.6);
+  color:var(--color-light-blue);
+  font-size:0.8rem;
+  font-weight:600;
+  padding:0.3rem 0.6rem;
+  border-radius:4px;
+}
+
+/* Overlay abajo derecha */
+.overlay-bottom-right {
+  position:absolute;
+  bottom:0.5rem;
+  right:0.5rem;
+  background:rgba(0,0,0,0.6);
+  color:#fff;
+  font-size:0.75rem;
+  font-weight:600;
+  padding:0.3rem 0.6rem;
+  border-radius:4px;
+  text-transform:uppercase;
+}
+
+.overlay .codigo { color:var(--color-light-blue); }
+.overlay .categoria { text-transform:uppercase; }
+
+.proyecto-info {
+  padding:0.8rem;
+  text-align:center;
+}
+.proyecto-info h3 {
+  font-size:1rem;
+  font-weight:700;
+  margin:0.2rem 0;
+  line-height:1.2;
+}
+.proyecto-info p {
+  font-size:0.85rem;
+  color:var(--color-dark-gray);
+  margin:0.2rem 0;
+}
+.codigo {
+  font-size:0.8rem;
+  font-weight:600;
+  color:var(--color-light-blue);
+}
+.detalle {
+  background:none;
+  border:none;
+  color:var(--color-light-blue);
+  font-weight:600;
+  cursor:pointer;
+  text-transform:uppercase;
+  margin-top:0.3rem;
+}
+
+
+
+
+
+  
+	
+
+
+	
+
+
+.popup-proyecto {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+}
+
+.popup-proyecto-box {
+  background:#fff;
+  border-radius:12px;
+  max-width:900px;
+  width:90%;
+  max-height:90vh;
+  overflow-y:auto;
+  padding:2rem;
+  position:relative;
+}
+
+.popup-proyecto-close {
+  position:absolute; 
+  top:1rem; right:1rem;
+  font-size:1.5rem;
+  font-weight:bold;
+  color:var(--color-dark-gray);
+  cursor:pointer;
+}
+
+.popup-proyecto-header { margin-bottom:1.5rem; z-index: }
+.popup-proyecto-code { font-size:0.9rem; font-weight:600;   color:var(--color-light-blue); display:block; margin-bottom:0.5rem; }
+.popup-proyecto-header h2 { font-size:1.6rem; font-weight:800; margin-bottom:0.3rem; }
+.popup-proyecto-subtitle { font-size:0.95rem; color:var(--color-dark-gray); }
+
+.popup-proyecto-gallery { display:flex; flex-direction:column; align-items:center; gap:1rem; }
+.popup-proyecto-main {
+  width:100%; aspect-ratio:1/1; object-fit:cover;
+  border-radius:8px; max-height:500px;
+}
+.popup-proyecto-thumbs { display:flex; gap:0.5rem; justify-content:center; }
+.popup-proyecto-thumbs img {
+  width:80px; height:80px; object-fit:cover;
+  border-radius:6px; cursor:pointer;
+  transition:transform 0.2s ease;
+}
+.popup-proyecto-thumbs img:hover { transform:scale(1.05); box-shadow:0 0 6px rgba(0,0,0,0.3); }
+
+.popup-proyecto-cta {
+  display:inline-block; margin-top:1.5rem;
+  padding:0.8rem 1.2rem; background:var(--color-light-blue); color:#fff;
+  font-weight:600; text-decoration:none; border-radius:6px;
+  transition:background 0.3s ease;
+}
+.popup-proyecto-cta:hover { background:  var(--color-light-blue); }
+
+
+	  
+	  
+	  
+	  
+	  
+	  
+	  .section-container {
+  padding:4rem 2rem;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.section-header {
+  margin-bottom:2rem;
+}
+.section-num {
+  font-weight:600;
+  color:var(--color-light-blue);
+  display:block;
+  margin-bottom:0.5rem;
+}
+.section-header h2 {
+  font-size:1.8rem;
+  font-weight:800;
+  margin-bottom:0.5rem;
+}
+.section-header p {
+  font-size:1rem;
+  color:var(--color-dark-gray);
+}
+
+.cotizacion-content {
+  display:flex;
+  gap:2rem;
+  flex-wrap:wrap;
+}
+
+.cotizacion-info {
+  flex:1;
+  min-width:250px;
+}
+.cotizacion-info p {
+  margin-bottom:1rem;
+  font-size:0.95rem;
+}
+.cotizacion-info a {
+  color:var(--color-light-blue);
+  text-decoration:none;
+}
+.cotizacion-info a:hover {
+  text-decoration:underline;
+}
+
+.cotizacion-form {
+  flex:2;
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+.cotizacion-form label {
+  font-weight:600;
+  font-size:0.9rem;
+}
+.cotizacion-form input,
+.cotizacion-form textarea {
+  width:100%;
+  padding:0.6rem;
+  border:1px solid #ccc;
+  border-radius:6px;
+  font-size:0.95rem;
+}
+.cotizacion-form textarea {
+  min-height:120px;
+  resize:vertical;
+}
+.cotizacion-submit {
+  background:var(--color-light-blue);
+  color:#fff;
+  font-weight:600;
+  padding:0.8rem 1.2rem;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  transition:background 0.3s ease;
+}
+.cotizacion-submit:hover {
+  background:  var(--color-light-blue);
+}
+
+.cotizacion-footer {
+  margin-top:2rem;
+  text-align:center;
+  font-size:0.9rem;
+  color:var(--color-dark-gray);
+}
+.cotizacion-social {
+  margin:1rem 0;
+}
+.cotizacion-social a {
+  margin:0 0.5rem;
+  color:var(--color-light-blue);
+  text-decoration:none;
+}
+.cotizacion-social a:hover {
+  text-decoration:underline;
+}
+.cotizacion-status {
+  display:block;
+  margin-top:0.5rem;
+  font-weight:600;
+  color:var(--color-light-blue);
+}
+
+	  
+	  
+	  
+	  
+	  
+	  
+	  /* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN BASE
+   ========================================================================== */
+:root {
+  --color-dark-blue: #002a4c;
+  --color-light-blue: #2680bc;
+  --color-dark-gray: #1d2222;
+  --color-light-gray: #f7f7f7;
+  --white: #ffffff;
+  --shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.1);
+  --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #f9f9f9;
+  color: var(--color-dark-gray);
+  line-height: 1.6;
+  overflow-x: hidden; /* Evita cualquier desborde global */
+  width: 100%;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+h2 span { color: var(--color-light-blue); }
+
+/* ==========================================================================
+   2. HEADER Y NAVEGACIÓN (DESKTOP)
+   ========================================================================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #eee;
+}
+
+nav.menu {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+nav.menu a {
+  color: var(--color-dark-gray);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+nav.menu a:hover {
+  color: var(--color-light-blue);
+}
+
+.cta1 {
+  background: var(--color-light-blue);
+  color: var(--white) !important;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+}
+
+.hamburger {
+  display: none; /* Oculto en desktop */
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--color-light-blue);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  padding: 2rem 5%;
+  background: #000;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.hero-content .buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-content .buttons a {
+  border: 1px solid var(--white);
+  padding: 1rem 2rem;
+  color: var(--white);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.hero-content .buttons a:hover {
+  background: var(--color-light-blue);
+  border-color: var(--color-light-blue);
+}
+
+/* ==========================================================================
+   4. GRIDS DE SECCIÓN (NOSOTROS, SERVICIOS, PORTAFOLIO)
+   ========================================================================== */
+.nosotros, .contenedor-portafolio {
+  padding: 6rem 5%;
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* Estructura Base de Grid */
+.grid-nosotros, .grid-clientes, .section-header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.section-num {
+  font-size: 0.9rem;
+  color: var(--color-light-blue);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+/* Tarjetas de Fases y Servicios */
+.fases{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.fase{
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.fase:hover, .servicio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Portafolio */
+.proyectos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 3fr));
+  gap: 2rem;
+}
+
+.proyecto-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.proyecto-img img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   5. CARRUSEL DE LOGOS
+   ========================================================================== */
+.carousel-wrapper {
+  overflow: hidden;
+  padding: 3rem 0;
+  position: relative;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  gap: 5rem;
+  animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   6. RESPONSIVE MEJORADO (SOLUCIÓN A TUS PROBLEMAS)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  /* --- NAVEGACIÓN OVERLAY --- */
+  .hamburger {
+    display: block;
+    z-index: 1100;
+  }
+
+  nav.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    z-index: 1050;
+    /* Efecto aparecer/desaparecer */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  nav.menu.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  nav.menu a {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  /* --- RE-ESTRUCTURACIÓN DE CADA GRID --- */
+  
+  /* Independizar Nosotros y Clientes */
+  .grid-nosotros, .grid-clientes, .section-header {
+    grid-template-columns: 1fr; /* Colapsa el número arriba del texto */
+    gap: 1rem;
+  }
+
+  .section-num {
+    border-bottom: 2px solid var(--color-light-blue);
+    width: fit-content;
+    padding-bottom: 0.2rem;
+  }
+
+  /* Independizar Fases */
+  .fases {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* Independizar Portafolio */
+  .proyectos-grid {
+    grid-template-columns: 3fr; /* Una sola columna para evitar recortes */
+    gap: 3rem;
+  }
+
+  /* Independizar Cotización */
+
+  .cotizacion-content {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  /* Independizar Métricas */
+  .metrics {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  /* --- AJUSTES DE TEXTO --- */
+  .hero-content h1 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  .hero-content .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-content .buttons a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* --- AJUSTES FINALES PARA MÓVILES MUY PEQUEÑOS --- */
+@media (max-width: 480px) {
+  .nosotros, .contenedor-portafolio {
+    padding: 3rem 1.5rem;
+  }
+
+  .metrics p {
+    font-size: 1.8rem;
+  }
+}
+	/* --- RESPONSIVE SERVICIOS --- */
+
+@media (max-width: 1024px) {
+  .servicios-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+    gap: 1.5rem;
+  }
+  
+  .contenedor-servicios {
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .servicios {
+    padding: 4rem 1.5rem;
+  }
+
+  .grid-servicios {
+    grid-template-columns: 1fr; /* Colapsar header */
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-num {
+    padding-top: 0;
+    border-bottom: 2px solid var(--color-light-blue);
+    width: fit-content;
+    padding-bottom: 0.2rem;
+  }
+
+  .servicios-grid {
+    grid-template-columns: 1fr; /* 1 columna en móviles */
+    gap: 1.5rem;
+  }
+
+  .servicio-card {
+    padding: 1.8rem;
+  }
+
+  .grid-servicios h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tags span {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .servicio-card h3 {
+    font-size: 1.15rem;
+  }
+}
+	  /* --- RESPONSIVE POPUPS --- */
+
+@media (max-width: 768px) {
+  .popup-content {
+    padding: 3.5rem 1.5rem 1.5rem; /* Ajuste de espacio interno */
+    border-radius: 12px;
+    width: 95%; /* Ocupa casi toda la pantalla */
+  }
+
+  .popup-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  /* Si tienes elementos de proceso dentro (process-item) */
+  .process-item {
+    flex-direction: column; /* Apilar imagen y texto */
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .process-num {
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .process-info {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .process-img {
+    width: 100% !important; /* Imagen a ancho completo */
+    height: 200px !important;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup {
+    padding: 0.5rem; /* Popup casi a pantalla completa */
+  }
+
+  .popup-content {
+    max-height: 95vh;
+    padding: 3rem 1rem 1rem;
+  }
+
+  /* Ajuste de miniaturas de imágenes si las usas */
+  .thumbs {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+  }
+  
+  .thumbs img {
+    width: 100%;
+    height: 60px;
+  }
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="#inicio">
+  <img src="logo.webp" alt="ODC Logo" style="height:40px;">
+</a>
+  <nav class="menu">
+    <a href="#nosotros">Nosotros</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#portafolio">Proyectos</a>
+    <a href="#cotizacion">Contacto</a>
+    <a href="#cotiza" class="cta1">Cotizar Proyecto</a>
+  </nav>
+  <button class="hamburger" aria-label="Abrir menú">☰</button>
+</header>
+
+<section class="hero"  id="inicio">
+  <!-- Slides de fondo -->
+  <div class="hero-slide active" style="background-image:url('img1.webp');"></div>
+  <div class="hero-slide" style="background-image:url('img2.webp');"></div>
+  <div class="hero-slide" style="background-image:url('img3.webp');"></div>
+  <div class="hero-slide" style="background-image:url('img4.webp');"></div>
+  <div class="hero-slide" style="background-image:url('img5.webp');"></div>
+  <div class="hero-overlay"></div>
+
+  <!-- Contenido sobre el banner -->
+  <div class="hero-content">
+    <h1>Diseño & <span>Construcción</span><br>que inspira.</h1>
+    <p>Transformamos espacios con creatividad, técnica y compromiso. Nos especializamos en estructuras corporativas, comerciales, residenciales e institucionales de gran escala en toda Colombia.</p>
+    <div class="buttons">
+      <a href="#proyectos">Ver Proyectos</a>
+      <a href="#servicios">Nuestros Servicios</a>
+    </div>
+  </div>
+</section>
+<section id="nosotros" class="nosotros">
+	
+    <div class="metrics">
+      <div><h4>m² construidos</h4><p class="counter" data-target="62350">0</p></div>
+      <div><h4>Proyectos entregados</h4><p class="counter" data-target="43">0</p></div>
+      <div><h4>Años exp.</h4><p class="counter" data-target="8">0</p></div>
+      <div><h4>Estado</h4><p style="color:var(--color-light-blue);">Operativo</p></div>
+    </div>
+</section>
+<section class="nosotros">
+  <!-- Grid proceso -->
+  <div class="grid-nosotros">
+    <!-- Columna izquierda -->
+    <div class="col-izq">
+      <span class="section-num">01 / PROCESO</span>
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="col-der">
+      <h2>Del plano al <span>espacio vivido</span></h2>
+      <p>Cuatro fases controladas que garantizan calidad, cumplimiento y diseño integral.</p>
+
+      <!-- Steps en fila -->
+      <div class="fases">
+        <div class="fase">
+          <h3>&gt; STEP_01</h3>
+          <h4>Diagnóstico y Análisis</h4>
+          <p>Levantamiento del sitio, análisis de necesidades del cliente y estudio de viabilidad técnica y normativa.</p>
+          <button class="detalle" data-popup="popup1">+ Ver detalle</button>
+        </div>
+        <div class="fase">
+          <h3>&gt; STEP_02</h3>
+          <h4>Diseño Técnico</h4>
+          <p>Modelado BIM, renders, planos de detalle, coordinación entre especialidades y cálculo estructural.</p>
+          <button class="detalle" data-popup="popup2">+ Ver detalle</button>
+        </div>
+        <div class="fase">
+          <h3>&gt; STEP_03</h3>
+          <h4>Ejecución de Obra</h4>
+          <p>Construcción con control de calidad, cronograma, presupuesto y supervisión técnica continua.</p>
+          <button class="detalle" data-popup="popup3">+ Ver detalle</button>
+        </div>
+        <div class="fase">
+          <h3>&gt; STEP_04</h3>
+          <h4>Entrega y Seguimiento</h4>
+          <p>Entrega documentada, comisionado y mantenimiento preventivo durante el primer año de garantía.</p>
+          <button class="detalle" data-popup="popup4">+ Ver detalle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid clientes -->
+  <div class="grid-clientes">
+    <div class="col-izq">
+      <span class="section-num">CONFIAN EN ODC</span>
+      <p>Marcas que han confiado en nuestro equipo a lo largo de los años.</p>
+    </div>
+      <div class="carousel-wrapper">
+        <div class="carousel">
+          <div class="fade-left"></div>
+          <div class="fade-right"></div>
+          <div class="track">
+            <!-- Logos duplicados para efecto infinito -->
+            <img src="cliente-exito.webp" alt="Grupo Éxito">
+            <img src="cliente-ara.webp" alt="Ara">
+            <img src="cliente-alcabama.webp" alt="Alcabama">
+            <img src="cliente-amarilo.webp" alt="Amarilo">
+            <img src="cliente-ingeurbe.webp" alt="Ingeurbe">
+            <img src="cliente-tostao.webp" alt="Tostao’">
+            <img src="cliente-pizza.webp" alt="Pizza House">
+            <img src="cliente-sanautos.webp" alt="Sanautos">
+            <img src="cliente-necio.webp" alt="Necio Gastro Bar">
+            <img src="cliente-cumbrera.webp" alt="Cumbrera">
+            <img src="cliente-tassoni.webp" alt="Tassoni">
+            <img src="cliente-proyect.webp" alt="Proyectores y pantallas led">
+            <img src="cliente-workana.webp" alt="Workana">
+            <!-- Duplicados -->
+            <img src="cliente-exito.webp" alt="Grupo Éxito">
+            <img src="cliente-ara.webp" alt="Ara">
+            <img src="cliente-alcabama.webp" alt="Alcabama">
+            <img src="cliente-amarilo.webp" alt="Amarilo">
+            <img src="cliente-ingeurbe.webp" alt="Ingeurbe">
+            <img src="cliente-tostao.webp" alt="Tostao’">
+            <img src="cliente-pizza.webp" alt="Pizza House">
+            <img src="cliente-sanautos.webp" alt="Sanautos">
+            <img src="cliente-necio.webp" alt="Necio Gastro Bar">
+            <img src="cliente-cumbrera.webp" alt="Cumbrera">
+            <img src="cliente-tassoni.webp" alt="Tassoni">
+            <img src="cliente-proyect.webp" alt="Proyectores y pantallas led">
+            <img src="cliente-workana.webp" alt="Workana">
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POPUPS -->
+<div id="popup1" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+
+    <!-- Header -->
+    <div class="popup-header">
+      <span class="step-num">STEP_01 · 2 a 4 semanas</span>
+      <h2>DIAGNÓSTICO Y ANÁLISIS</h2>
+      <p class="subtitle">
+        Levantamiento del sitio, análisis de necesidades del cliente y estudio de viabilidad técnica y normativa.
+      </p>
+    </div>
+
+    <!-- PROCESO -->
+    <div class="popup-section">
+      <h3>PROCESO</h3>
+
+      <!-- Fase 01 -->
+      <div class="process-item">
+        <span class="process-num">01</span>
+        <div class="process-info">
+          <img src="fase1-visita.jpg" alt="Visita técnica" class="process-img">
+          <div>
+            <p><strong>Visita técnica al predio</strong><br>Reconocimiento del lote, accesos, redes existentes y condiciones del entorno urbano.</p>
+            <div class="thumbs">
+              <img src="fase1-visita-thumb1.jpg" alt="Miniatura 1">
+              <img src="fase1-visita-thumb2.jpg" alt="Miniatura 2">
+              <img src="fase1-visita-thumb3.jpg" alt="Miniatura 3">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fase 02 -->
+      <div class="process-item">
+        <span class="process-num">02</span>
+        <div class="process-info">
+          <img src="fase1-briefing.jpg" alt="Briefing cliente" class="process-img">
+          <div>
+            <p><strong>Briefing con el cliente</strong><br>Definición de objetivos, programa arquitectónico, presupuesto objetivo y tiempos esperados.</p>
+            <div class="thumbs">
+              <img src="fase1-briefing-thumb1.jpg" alt="Miniatura 1">
+              <img src="fase1-briefing-thumb2.jpg" alt="Miniatura 2">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fase 03 -->
+      <div class="process-item">
+        <span class="process-num">03</span>
+        <div class="process-info">
+          <img src="fase1-estudios.jpg" alt="Estudios preliminares" class="process-img">
+          <div>
+            <p><strong>Estudios preliminares</strong><br>Suelos, topografía, hidrosanitario y eléctrico cuando el alcance lo requiere.</p>
+            <div class="thumbs">
+              <img src="fase1-estudios-thumb1.jpg" alt="Miniatura 1">
+              <img src="fase1-estudios-thumb2.jpg" alt="Miniatura 2">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fase 04 -->
+      <div class="process-item">
+        <span class="process-num">04</span>
+        <div class="process-info">
+          <img src="fase1-normativa.jpg" alt="Marco normativo" class="process-img">
+          <div>
+            <p><strong>Marco normativo</strong><br>Verificación de usos del suelo, índices de construcción, retiros y requisitos de licencia.</p>
+            <div class="thumbs">
+              <img src="fase1-normativa-thumb1.jpg" alt="Miniatura 1">
+              <img src="fase1-normativa-thumb2.jpg" alt="Miniatura 2">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTREGABLES -->
+    <div class="popup-section">
+      <h3>ENTREGABLES</h3>
+      <div class="deliverables-grid">
+        <ul>
+          <li>Informe de diagnóstico técnico</li>
+          <li>Levantamiento topográfico y arquitectónico</li>
+        </ul>
+        <ul>
+          <li>Estudio de normativa POT y curaduría</li>
+          <li>Análisis de viabilidad financiera preliminar</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="#" class="cta">COTIZAR ESTA FASE →</a>
+  </div>
+</div>
+
+<div id="popup2" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+
+    <div class="popup-header">
+      <span class="step-num">STEP_02 · 4 a 10 semanas</span>
+      <h2>DISEÑO TÉCNICO</h2>
+      <p class="subtitle">Modelado BIM, renders, planos de detalle, coordinación entre especialidades y cálculo estructural.</p>
+    </div>
+
+    <div class="popup-section">
+      <h3>PROCESO</h3>
+
+      <div class="process-item">
+        <span class="process-num">01</span>
+        <div class="process-info">
+          <img src="fase2-anteproyecto.jpg" class="process-img" alt="Anteproyecto">
+          <div>
+            <p><strong>Anteproyecto arquitectónico</strong><br>Zonificación, volumetría y propuesta espacial validada con el cliente.</p>
+            <div class="thumbs">
+              <img src="fase2-anteproyecto-thumb1.jpg">
+              <img src="fase2-anteproyecto-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-item">
+        <span class="process-num">02</span>
+        <div class="process-info">
+          <img src="fase2-bim.jpg" class="process-img" alt="Modelado BIM">
+          <div>
+            <p><strong>Modelado BIM</strong><br>Coordinación entre arquitectura, estructura, hidrosanitario, eléctrico y mecánico en un solo modelo.</p>
+            <div class="thumbs">
+              <img src="fase2-bim-thumb1.jpg">
+              <img src="fase2-bim-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-item">
+        <span class="process-num">03</span>
+        <div class="process-info">
+          <img src="fase2-estructural.jpg" class="process-img" alt="Cálculo estructural">
+          <div>
+            <p><strong>Cálculo estructural</strong><br>Memorias de cálculo bajo NSR-10 y planos de detalle constructivo.</p>
+            <div class="thumbs">
+              <img src="fase2-estructural-thumb1.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-item">
+        <span class="process-num">04</span>
+        <div class="process-info">
+          <img src="fase2-presupuesto.jpg" class="process-img" alt="Presupuesto y cronograma">
+          <div>
+            <p><strong>Presupuesto y cronograma</strong><br>APUs por capítulo, programación en MS Project y curva de inversión.</p>
+            <div class="thumbs">
+              <img src="fase2-presupuesto-thumb1.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-section">
+      <h3>ENTREGABLES</h3>
+      <div class="deliverables-grid">
+        <ul>
+          <li>Planos arquitectónicos, estructurales y MEP</li>
+          <li>Modelo BIM coordinado</li>
+        </ul>
+        <ul>
+          <li>Renders fotorrealistas y recorridos 3D</li>
+          <li>Especificaciones técnicas y presupuesto detallado</li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="#" class="cta">COTIZAR ESTA FASE →</a>
+  </div>
+</div>
+
+
+<div id="popup3" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+
+    <div class="popup-header">
+      <span class="step-num">STEP_03 · Según alcance</span>
+      <h2>EJECUCIÓN DE OBRA</h2>
+      <p class="subtitle">Construcción con control de calidad, cronograma, presupuesto y supervisión técnica continua.</p>
+    </div>
+
+    <div class="popup-section">
+      <h3>PROCESO</h3>
+
+      <div class="process-item">
+        <span class="process-num">01</span>
+        <div class="process-info">
+          <img src="fase3-tierras.jpg" class="process-img" alt="Movimiento de tierras">
+          <div>
+            <p><strong>Movimiento de tierras y cimentación</strong><br>Excavaciones, pilotaje y placa de contrapiso con ensayos de control.</p>
+            <div class="thumbs">
+              <img src="fase3-tierras-thumb1.jpg">
+              <img src="fase3-tierras-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-item">
+        <span class="process-num">02</span>
+        <div class="process-info">
+          <img src="fase3-estructura.jpg" class="process-img" alt="Estructura y mampostería">
+          <div>
+            <p><strong>Estructura y mampostería</strong><br>Vaciados controlados, ensayos de compresión y cumplimiento de planos estructurales.</p>
+            <div class="thumbs">
+              <img src="fase3-estructura-thumb1.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-item">
+        <span class="process-num">03</span>
+        <div class="process-info">
+          <img src="fase3-acabados.jpg" class="process-img" alt="Acabados y MEP">
+          <div>
+            <p><strong>Acabados y MEP</strong><br>Instalación de redes, enchapes, carpintería y acabados de alta calidad.</p>
+            <div class="thumbs">
+              <img src="fase3-acabados-thumb1.jpg">
+              <img src="fase3-acabados-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-item">
+        <span class="process-num">04</span>
+        <div class="process-info">
+          <img src="fase3-supervision.jpg" class="process-img" alt="Supervisión continua">
+          <div>
+            <p><strong>Supervisión continua</strong><br>Residente de obra, director técnico y comité semanal con el cliente.</p>
+            <div class="thumbs">
+              <img src="fase3-supervision-thumb1.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-section">
+      <h3>ENTREGABLES</h3>
+      <div class="deliverables-grid">
+        <ul>
+          <li>Bitácora de obra y actas semanales</li>
+          <li>Control de calidad por especialidad</li>
+        </ul>
+        <ul>
+          <li>Reportes de avance físico y financiero</li>
+          <li>Gestión HSE y permisos en obra</li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="#" class="cta">COTIZAR ESTA FASE →</a>
+  </div>
+</div>
+
+<div id="popup4" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+
+    <!-- Header -->
+    <div class="popup-header">
+      <span class="step-num">STEP_04 · 1 año de acompañamiento</span>
+      <h2>ENTREGA Y SEGUIMIENTO</h2>
+      <p class="subtitle">
+        Entrega documentada, comisionado y mantenimiento preventivo durante el primer año de garantía.
+      </p>
+    </div>
+
+    <!-- PROCESO -->
+    <div class="popup-section">
+      <h3>PROCESO</h3>
+
+      <!-- Fase 01 -->
+      <div class="process-item">
+        <span class="process-num">01</span>
+        <div class="process-info">
+          <img src="fase4-preentrega.jpg" class="process-img" alt="Pre-entrega">
+          <div>
+            <p><strong>Pre-entrega</strong><br>Recorrido técnico, lista de pendientes y cierre de detalles antes de la entrega formal.</p>
+            <div class="thumbs">
+              <img src="fase4-preentrega-thumb1.jpg">
+              <img src="fase4-preentrega-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fase 02 -->
+      <div class="process-item">
+        <span class="process-num">02</span>
+        <div class="process-info">
+          <img src="fase4-entrega.jpg" class="process-img" alt="Entrega documentada">
+          <div>
+            <p><strong>Entrega documentada</strong><br>Acta de entrega, manuales de operación y planos conforme a obra.</p>
+            <div class="thumbs">
+              <img src="fase4-entrega-thumb1.jpg">
+              <img src="fase4-entrega-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fase 03 -->
+      <div class="process-item">
+        <span class="process-num">03</span>
+        <div class="process-info">
+          <img src="fase4-comisionado.jpg" class="process-img" alt="Comisionado de sistemas">
+          <div>
+            <p><strong>Comisionado de sistemas</strong><br>Pruebas de funcionamiento en redes eléctricas, hidrosanitarias y mecánicas.</p>
+            <div class="thumbs">
+              <img src="fase4-comisionado-thumb1.jpg">
+              <img src="fase4-comisionado-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fase 04 -->
+      <div class="process-item">
+        <span class="process-num">04</span>
+        <div class="process-info">
+          <img src="fase4-mantenimiento.jpg" class="process-img" alt="Mantenimiento preventivo">
+          <div>
+            <p><strong>Mantenimiento preventivo</strong><br>Visitas trimestrales durante el primer año de garantía para asegurar el correcto desempeño.</p>
+            <div class="thumbs">
+              <img src="fase4-mantenimiento-thumb1.jpg">
+              <img src="fase4-mantenimiento-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTREGABLES -->
+    <div class="popup-section">
+      <h3>ENTREGABLES</h3>
+      <div class="deliverables-grid">
+        <ul>
+          <li>Acta de entrega y manuales</li>
+          <li>Planos conforme a obra</li>
+        </ul>
+        <ul>
+          <li>Informe de comisionado</li>
+          <li>Plan de mantenimiento preventivo</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="#" class="cta">COTIZAR ESTA FASE →</a>
+  </div>
+</div>
+	<section class="servicios" id="servicios">
+  <div class="contenedor-servicios">
+    <div class="grid-servicios">
+      <div class="section-num">02 / SERVICIOS</div>
+      <div>
+        <h2>SEIS DISCIPLINAS. UN SOLO EQUIPO.</h2>
+        <p class="subtitle">[CLICK EN CADA SERVICIO PARA VER EL PASO A PASO]</p>
+      </div>
+    </div>
+
+    <div class="servicios-grid">
+      <!-- Servicio 01 -->
+      <div class="servicio-card">
+        <span class="servicio-num">01</span>
+        <h3>DISEÑO ARQUITECTÓNICO</h3>
+        <p>Modelado y visualización 3D, conceptos creativos, renders, distribución de áreas, diseño interior y mobiliario personalizado.</p>
+        <div class="tags">
+          <span>BIM 3D</span><span>RENDERS</span><span>DISEÑO INTERIOR</span>
+        </div>
+        <button class="detalle" data-popup="popup-servicio1">VER PROCESO +</button>
+      </div>
+
+      <!-- Servicio 02 -->
+      <div class="servicio-card">
+        <span class="servicio-num">02</span>
+        <h3>PRESUPUESTOS Y PLANIFICACIÓN</h3>
+        <p>Medición de cantidades, estudio de precios unitarios, presupuestos detallados y elaboración de cronogramas de obra.</p>
+        <div class="tags">
+          <span>APU</span><span>CRONOGRAMAS</span><span>CANTIDADES</span>
+        </div>
+        <button class="detalle" data-popup="popup-servicio2">VER PROCESO +</button>
+      </div>
+
+      <!-- Servicio 03 -->
+      <div class="servicio-card">
+        <span class="servicio-num">03</span>
+        <h3>EJECUCIÓN DE OBRA</h3>
+        <p>Estructuras metálicas, drywall, eléctricos, hidrosanitarios, climatización, CCTV, automatización, fachadas y acabados.</p>
+        <div class="tags">
+          <span>ESTRUCTURAL</span><span>MEP</span><span>ACABADOS</span>
+        </div>
+        <button class="detalle" data-popup="popup-servicio3">VER PROCESO +</button>
+      </div>
+
+      <!-- Servicio 04 -->
+      <div class="servicio-card">
+        <span class="servicio-num">04</span>
+        <h3>GERENCIA DE OBRA</h3>
+        <p>Gestión comercial, supervisión técnica y administrativa, control de documentación legal y técnica del proyecto.</p>
+        <div class="tags">
+          <span>SUPERVISIÓN</span><span>CONTROL</span><span>GESTIÓN</span>
+        </div>
+        <button class="detalle" data-popup="popup-servicio4">VER PROCESO +</button>
+      </div>
+
+      <!-- Servicio 05 -->
+      <div class="servicio-card">
+        <span class="servicio-num">05</span>
+        <h3>MANTENIMIENTO</h3>
+        <p>Mantenimiento preventivo y correctivo. Inspecciones semanales el primer mes y trimestrales durante el primer año.</p>
+        <div class="tags">
+          <span>PREVENTIVO</span><span>CORRECTIVO</span><span>GARANTÍA</span>
+        </div>
+        <button class="detalle" data-popup="popup-servicio5">VER PROCESO +</button>
+      </div>
+
+      <!-- Servicio 06 -->
+      <div class="servicio-card">
+        <span class="servicio-num">06</span>
+        <h3>INFRAESTRUCTURA RESIDENCIAL</h3>
+        <p>Viviendas unifamiliares y multifamiliares. Urbanización, cimentaciones, redes, automatización, paisajismo y cerramientos.</p>
+        <div class="tags">
+          <span>VIVIENDA</span><span>URBANISMO</span><span>DOMÓTICA</span>
+        </div>
+        <button class="detalle" data-popup="popup-servicio6">VER PROCESO +</button>
+      </div>
+    </div>
+  </div>
+</section>
+	
+
+
+
+<div id="popup-servicio1" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+    <div class="popup-header">
+      <span class="step-num">01 · SERVICIO · PASO A PASO</span>
+      <h2>Diseño Arquitectónico</h2>
+      <p class="subtitle">Modelado y visualización 3D, conceptos creativos, renders, distribución de áreas, diseño interior y mobiliario personalizado.</p>
+    </div>
+    <div class="popup-section">
+      <h3>PROCESO ODC · 5 ETAPAS</h3>
+      <div class="process-item"><span class="process-num">01</span><div class="process-info"><img src="servicio2-Briefing.jpg" class="process-img"><div><h4>Briefing & Levantamiento</h4><p>Reunión con el cliente, levantamiento del lote y análisis de necesidades, normativa y presupuesto objetivo.</p><div class="thumbs"><img src="servicio2-Briefing-thumb1.jpg"><img src="servicio2-Briefing-thumb2.jpg"></div></div></div></div>
+      <div class="process-item"><span class="process-num">02</span><div class="process-info"><img src="servicio2-cuantificacion.jpg" class="process-img"><div><h4>Anteproyecto</h4><p>Zonificación, volumetría, esquemas funcionales y primeras imágenes conceptuales para validación.</p><div class="thumbs"><img src="servicio2-Anteproyecto-thumb1.jpg"><img src="servicio2-Anteproyecto-thumb2.jpg"></div></div></div></div>
+      <div class="process-item"><span class="process-num">03</span><div class="process-info"><img src="servicio2-Modelado.jpg" class="process-img"><div><h4>Modelado BIM 3D</h4><p>Desarrollo del modelo arquitectónico en BIM con coordinación de especialidades técnicas.</p><div class="thumbs"><img src="servicio2-Modelado-thumb1.jpg"><img src="servicio2-Modelado-thumb2.jpg"></div></div></div></div>
+      <div class="process-item"><span class="process-num">04</span><div class="process-info"><img src="servicio2-Renders.jpg" class="process-img"><div><h4>Renders & Visualización</h4><p>Imágenes fotorrealistas interiores y exteriores, recorridos virtuales y material de presentación.</p><div class="thumbs"><img src="servicio2-Renders-thumb1.jpg"><img src="servicio2-Renders-thumb2.jpg"></div></div></div></div>
+      <div class="process-item"><span class="process-num">05</span><div class="process-info"><img src="servicio2-Planos.jpg" class="process-img"><div><h4>Planos para Construcción</h4><p>Entrega de planimetría arquitectónica, detalles constructivos y especificaciones técnicas.</p><div class="thumbs"><img src="servicio2-Planos-thumb1.jpg"><img src="servicio2-Planos-thumb2.jpg"></div></div></div></div>
+    </div>
+    <a href="#" class="cta">COTIZAR ESTE SERVICIO →</a>
+  </div>
+</div>
+<div id="popup-servicio2" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+    <div class="popup-header">
+      <span class="step-num">02 · SERVICIO · PASO A PASO</span>
+      <h2>PRESUPUESTOS Y PLANIFICACIÓN</h2>
+      <p class="subtitle">Medición de cantidades, estudio de precios unitarios, presupuestos detallados y elaboración de cronogramas de obra.</p>
+    </div>
+    <div class="popup-section">
+      <h3>PROCESO ODC · 5 ETAPAS</h3>
+      <div class="process-item"><span class="process-num">01</span><div class="process-info"><img src="servicio2-lectura.jpg" class="process-img"><div><h4>Lectura de planos</h4><p>Revisión técnica de planos arquitectónicos, estructurales y de redes para detectar inconsistencias.</p><div class="thumbs"><img src="servicio2-lectura-thumb1.jpg"><img src="servicio2-lectura-thumb2.jpg"></div></div></div></div>
+      <div class="process-item"><span class="process-num">02</span><div class="process-info"><img src="servicio2-cuantificacion.jpg" class="process-img"><div><h4>Cuantificación</h4><p>Medición detallada de cantidades de obra por capítulos y subcapítulos.</p><div class="thumbs"><img src="servicio2-cuantificacion-thumb1.jpg"><img src="servicio2-cuantificacion-thumb2.jpg"></div></div></div></div>
+      <div class="process-item"><span class="process-num">03</span><div class="process-info"><img src="servicio2-apu.jpg" class="process-img"><div><h4>Análisis de precios unitarios</h4><p>Construcción de APU con materiales, mano de obra, equipo y rendimientos actualizados.</p><div class="thumbs"><img src="servicio2-apu-thumb1.jpg"><img src="servicio2-apu-thumb2.jpg"></div></div></div></div>
+      <div class="process-item"><span class="process-num">04</span><div class="process-info"><img src="servicio2-presupuesto.jpg" class="process-img"><div><h4>Presupuesto maestro</h4><p>Consolidación del presupuesto con AIU, imprevistos y resumen ejecutivo.</p><div class="thumbs"><img src="servicio2-presupuesto-thumb1.jpg"><img src="servicio2-presupuesto-thumb2.jpg"></div></div></div></div>
+      <div class="process-item"><span class="process-num">05</span><div class="process-info"><img src="servicio2-cronograma.jpg" class="process-img"><div><h4>Cronograma & flujo de caja</h4><p>Programación tipo Gantt, ruta crítica y proyección de desembolsos.</p><div class="thumbs"><img src="servicio2-cronograma-thumb1.jpg"><img src="servicio2-cronograma-thumb2.jpg"></div></div></div></div>
+    </div>
+    <a href="#" class="cta">COTIZAR ESTE SERVICIO →</a>
+  </div>
+</div>
+	
+<div id="popup-servicio3" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+
+    <!-- Header -->
+    <div class="popup-header">
+      <span class="step-num">03 · SERVICIO · PASO A PASO</span>
+      <h2>EJECUCIÓN DE OBRA</h2>
+      <p class="subtitle">
+        Estructuras metálicas, drywall, eléctricos, hidrosanitarios, climatización, CCTV, automatización, fachadas y acabados.
+      </p>
+    </div>
+
+    <!-- PROCESO -->
+    <div class="popup-section">
+      <h3>PROCESO ODC · 6 ETAPAS</h3>
+
+      <!-- Etapa 01 -->
+      <div class="process-item">
+        <span class="process-num">01</span>
+        <div class="process-info">
+          <img src="servicio3-preliminares.jpg" class="process-img" alt="Preliminares & Cerramiento">
+          <div>
+            <h4>Preliminares & Cerramiento</h4>
+            <p>Instalación de campamento, cerramiento del predio y trazado topográfico.</p>
+            <div class="thumbs">
+              <img src="servicio3-preliminares-thumb1.jpg">
+              <img src="servicio3-preliminares-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 02 -->
+      <div class="process-item">
+        <span class="process-num">02</span>
+        <div class="process-info">
+          <img src="servicio3-cimentacion.jpg" class="process-img" alt="Cimentación & Estructura">
+          <div>
+            <h4>Cimentación & Estructura</h4>
+            <p>Excavaciones, cimentación y montaje de estructura metálica o concreto.</p>
+            <div class="thumbs">
+              <img src="servicio3-cimentacion-thumb1.jpg">
+              <img src="servicio3-cimentacion-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 03 -->
+      <div class="process-item">
+        <span class="process-num">03</span>
+        <div class="process-info">
+          <img src="servicio3-mamposteria.jpg" class="process-img" alt="Mampostería & Drywall">
+          <div>
+            <h4>Mampostería & Drywall</h4>
+            <p>Levantamiento de muros, divisiones livianas y cielorrasos.</p>
+            <div class="thumbs">
+              <img src="servicio3-mamposteria-thumb1.jpg">
+              <img src="servicio3-mamposteria-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 04 -->
+      <div class="process-item">
+        <span class="process-num">04</span>
+        <div class="process-info">
+          <img src="servicio3-redes.jpg" class="process-img" alt="Redes MEP">
+          <div>
+            <h4>Redes MEP</h4>
+            <p>Instalaciones eléctricas, hidrosanitarias, gas, climatización, CCTV y automatización.</p>
+            <div class="thumbs">
+              <img src="servicio3-redes-thumb1.jpg">
+              <img src="servicio3-redes-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 05 -->
+      <div class="process-item">
+        <span class="process-num">05</span>
+        <div class="process-info">
+          <img src="servicio3-fachadas.jpg" class="process-img" alt="Fachadas & Acabados">
+          <div>
+            <h4>Fachadas & Acabados</h4>
+            <p>Enchapes, pisos, carpintería, pintura, fachadas y acabados de alta gama.</p>
+            <div class="thumbs">
+              <img src="servicio3-fachadas-thumb1.jpg">
+              <img src="servicio3-fachadas-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 06 -->
+      <div class="process-item">
+        <span class="process-num">06</span>
+        <div class="process-info">
+          <img src="servicio3-entrega.jpg" class="process-img" alt="Entrega & Puesta en marcha">
+          <div>
+            <h4>Entrega & Puesta en marcha</h4>
+            <p>Pruebas, manuales, planos record y entrega formal al cliente.</p>
+            <div class="thumbs">
+              <img src="servicio3-entrega-thumb1.jpg">
+              <img src="servicio3-entrega-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="#" class="cta">COTIZAR ESTE SERVICIO →</a>
+  </div>
+</div>
+	
+	<div id="popup-servicio4" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+
+    <!-- Header -->
+    <div class="popup-header">
+      <span class="step-num">04 · SERVICIO · PASO A PASO</span>
+      <h2>GERENCIA DE OBRA</h2>
+      <p class="subtitle">
+        Gestión comercial, supervisión técnica y administrativa, control de documentación legal y técnica del proyecto.
+      </p>
+    </div>
+
+    <!-- PROCESO -->
+    <div class="popup-section">
+      <h3>PROCESO ODC · 5 ETAPAS</h3>
+
+      <!-- Etapa 01 -->
+      <div class="process-item">
+        <span class="process-num">01</span>
+        <div class="process-info">
+          <img src="servicio4-plan.jpg" class="process-img" alt="Plan de gerencia">
+          <div>
+            <h4>Plan de gerencia</h4>
+            <p>Definición de alcance, organización del equipo, matriz de responsabilidades y plan de comunicaciones.</p>
+            <div class="thumbs">
+              <img src="servicio4-plan-thumb1.jpg">
+              <img src="servicio4-plan-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 02 -->
+      <div class="process-item">
+        <span class="process-num">02</span>
+        <div class="process-info">
+          <img src="servicio4-contratacion.jpg" class="process-img" alt="Contratación & Compras">
+          <div>
+            <h4>Contratación & Compras</h4>
+            <p>Selección de proveedores, contratación de subcontratistas y gestión de adquisiciones.</p>
+            <div class="thumbs">
+              <img src="servicio4-contratacion-thumb1.jpg">
+              <img src="servicio4-contratacion-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 03 -->
+      <div class="process-item">
+        <span class="process-num">03</span>
+        <div class="process-info">
+          <img src="servicio4-supervision.jpg" class="process-img" alt="Supervisión técnica">
+          <div>
+            <h4>Supervisión técnica</h4>
+            <p>Interventoría diaria de calidad, seguridad y cumplimiento de especificaciones.</p>
+            <div class="thumbs">
+              <img src="servicio4-supervision-thumb1.jpg">
+              <img src="servicio4-supervision-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 04 -->
+      <div class="process-item">
+        <span class="process-num">04</span>
+        <div class="process-info">
+          <img src="servicio4-control.jpg" class="process-img" alt="Control de costos & tiempo">
+          <div>
+            <h4>Control de costos & tiempo</h4>
+            <p>Seguimiento del presupuesto, cronograma, actas parciales y manejo de cambios.</p>
+            <div class="thumbs">
+              <img src="servicio4-control-thumb1.jpg">
+              <img src="servicio4-control-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 05 -->
+      <div class="process-item">
+        <span class="process-num">05</span>
+        <div class="process-info">
+          <img src="servicio4-reportes.jpg" class="process-img" alt="Reportes & Cierre">
+          <div>
+            <h4>Reportes & Cierre</h4>
+            <p>Informes semanales al cliente, gestión documental legal y cierre administrativo del proyecto.</p>
+            <div class="thumbs">
+              <img src="servicio4-reportes-thumb1.jpg">
+              <img src="servicio4-reportes-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="#" class="cta">COTIZAR ESTE SERVICIO →</a>
+  </div>
+</div>
+
+	
+<div id="popup-servicio5" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+
+    <!-- Header -->
+    <div class="popup-header">
+      <span class="step-num">05 · SERVICIO · PASO A PASO</span>
+      <h2>MANTENIMIENTO</h2>
+      <p class="subtitle">
+        Mantenimiento preventivo y correctivo. Inspecciones semanales el primer mes y trimestrales durante el primer año.
+      </p>
+    </div>
+
+    <!-- PROCESO -->
+    <div class="popup-section">
+      <h3>PROCESO ODC · 5 ETAPAS</h3>
+
+      <!-- Etapa 01 -->
+      <div class="process-item">
+        <span class="process-num">01</span>
+        <div class="process-info">
+          <img src="servicio5-diagnostico.jpg" class="process-img" alt="Diagnóstico inicial">
+          <div>
+            <h4>Diagnóstico inicial</h4>
+            <p>Inspección técnica del inmueble e identificación de puntos críticos a monitorear.</p>
+            <div class="thumbs">
+              <img src="servicio5-diagnostico-thumb1.jpg">
+              <img src="servicio5-diagnostico-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 02 -->
+      <div class="process-item">
+        <span class="process-num">02</span>
+        <div class="process-info">
+          <img src="servicio5-plan.jpg" class="process-img" alt="Plan de mantenimiento">
+          <div>
+            <h4>Plan de mantenimiento</h4>
+            <p>Cronograma personalizado de visitas preventivas según uso y tipo de instalaciones.</p>
+            <div class="thumbs">
+              <img src="servicio5-plan-thumb1.jpg">
+              <img src="servicio5-plan-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 03 -->
+      <div class="process-item">
+        <span class="process-num">03</span>
+        <div class="process-info">
+          <img src="servicio5-visitas1.jpg" class="process-img" alt="Visitas semanales (Mes 1)">
+          <div>
+            <h4>Visitas semanales (Mes 1)</h4>
+            <p>Acompañamiento intensivo durante el primer mes para ajustes finos post-entrega.</p>
+            <div class="thumbs">
+              <img src="servicio5-visitas1-thumb1.jpg">
+              <img src="servicio5-visitas1-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 04 -->
+      <div class="process-item">
+        <span class="process-num">04</span>
+        <div class="process-info">
+          <img src="servicio5-visitas2.jpg" class="process-img" alt="Visitas trimestrales (Año 1)">
+          <div>
+            <h4>Visitas trimestrales (Año 1)</h4>
+            <p>Inspecciones programadas durante el primer año cubiertas por la garantía.</p>
+            <div class="thumbs">
+              <img src="servicio5-visitas2-thumb1.jpg">
+              <img src="servicio5-visitas2-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 05 -->
+      <div class="process-item">
+        <span class="process-num">05</span>
+        <div class="process-info">
+          <img src="servicio5-correctivo.jpg" class="process-img" alt="Atención correctiva">
+          <div>
+            <h4>Atención correctiva</h4>
+            <p>Respuesta rápida ante cualquier eventualidad bajo cobertura de garantía.</p>
+            <div class="thumbs">
+              <img src="servicio5-correctivo-thumb1.jpg">
+              <img src="servicio5-correctivo-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="#" class="cta">COTIZAR ESTE SERVICIO →</a>
+  </div>
+</div>
+
+	
+	
+<div id="popup-servicio6" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+
+    <!-- Header -->
+    <div class="popup-header">
+      <span class="step-num">06 · SERVICIO · PASO A PASO</span>
+      <h2>INFRAESTRUCTURA RESIDENCIAL</h2>
+      <p class="subtitle">
+        Viviendas unifamiliares y multifamiliares. Urbanización, cimentaciones, redes, automatización, paisajismo y cerramientos.
+      </p>
+    </div>
+
+    <!-- PROCESO -->
+    <div class="popup-section">
+      <h3>PROCESO ODC · 6 ETAPAS</h3>
+
+      <!-- Etapa 01 -->
+      <div class="process-item">
+        <span class="process-num">01</span>
+        <div class="process-info">
+          <img src="servicio6-estudios.jpg" class="process-img" alt="Estudios previos">
+          <div>
+            <h4>Estudios previos</h4>
+            <p>Estudio de suelos, topografía, normativa urbanística y factibilidad del proyecto.</p>
+            <div class="thumbs">
+              <img src="servicio6-estudios-thumb1.jpg">
+              <img src="servicio6-estudios-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 02 -->
+      <div class="process-item">
+        <span class="process-num">02</span>
+        <div class="process-info">
+          <img src="servicio6-licencias.jpg" class="process-img" alt="Diseño & Licencias">
+          <div>
+            <h4>Diseño & Licencias</h4>
+            <p>Desarrollo arquitectónico y trámite de licencias de construcción y urbanismo.</p>
+            <div class="thumbs">
+              <img src="servicio6-licencias-thumb1.jpg">
+              <img src="servicio6-licencias-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 03 -->
+      <div class="process-item">
+        <span class="process-num">03</span>
+        <div class="process-info">
+          <img src="servicio6-urbanizacion.jpg" class="process-img" alt="Urbanización & Redes">
+          <div>
+            <h4>Urbanización & Redes</h4>
+            <p>Vías, andenes, redes hidrosanitarias, eléctricas y gas del conjunto.</p>
+            <div class="thumbs">
+              <img src="servicio6-urbanizacion-thumb1.jpg">
+              <img src="servicio6-urbanizacion-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 04 -->
+      <div class="process-item">
+        <span class="process-num">04</span>
+        <div class="process-info">
+          <img src="servicio6-vivienda.jpg" class="process-img" alt="Construcción de vivienda">
+          <div>
+            <h4>Construcción de vivienda</h4>
+            <p>Cimentación, estructura, mampostería y acabados de las unidades habitacionales.</p>
+            <div class="thumbs">
+              <img src="servicio6-vivienda-thumb1.jpg">
+              <img src="servicio6-vivienda-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 05 -->
+      <div class="process-item">
+        <span class="process-num">05</span>
+        <div class="process-info">
+          <img src="servicio6-domotica.jpg" class="process-img" alt="Domótica & Smart Home">
+          <div>
+            <h4>Domótica & Smart Home</h4>
+            <p>Integración de automatización, control de iluminación, CCTV y accesos.</p>
+            <div class="thumbs">
+              <img src="servicio6-domotica-thumb1.jpg">
+              <img src="servicio6-domotica-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etapa 06 -->
+      <div class="process-item">
+        <span class="process-num">06</span>
+        <div class="process-info">
+          <img src="servicio6-paisajismo.jpg" class="process-img" alt="Paisajismo & Entrega">
+          <div>
+            <h4>Paisajismo & Entrega</h4>
+            <p>Zonas verdes, cerramientos, mobiliario exterior y entrega formal al propietario.</p>
+            <div class="thumbs">
+              <img src="servicio6-paisajismo-thumb1.jpg">
+              <img src="servicio6-paisajismo-thumb2.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="#" class="cta">COTIZAR ESTE SERVICIO →</a>
+  </div>
+</div>
+	
+<section class="portafolio" id="portafolio">
+  <div class="contenedor-portafolio">
+    
+    <!-- Encabezado -->
+    <div class="section-header">
+      <div class="section-num">03 / PORTAFOLIO</div>
+      <div class="section-text">
+        <h2>PROYECTOS EJECUTADOS</h2>
+        <p class="subtitle">[120+ ENTREGADOS / COLOMBIA]</p>
+      </div>
+    </div>
+
+    <!-- Grid de proyectos -->
+    <div class="proyectos-grid">
+
+		
+		<!-- Proyecto 01 -->
+<div class="proyecto-card">
+  <div class="proyecto-img">
+    <img src="proy1.png" alt="Jardín Infantil J.A. Santamaría">
+    <div class="overlay-top-left">PRJ_001</div>
+    <div class="overlay-bottom-right">INSTITUCIONAL</div>
+  </div>
+  <div class="proyecto-info">
+    <h3>JARDÍN INFANTIL J.A. SANTAMARÍA</h3>
+    <p>Bogotá · 1,747 m²</p>
+<button class="detalle" data-popup="popup-proyecto1">VER DETALLE +</button></div>
+</div>
+
+<!-- Proyecto 02 -->
+<div class="proyecto-card">
+  <div class="proyecto-img">
+    <img src="proy2.png" alt="Cedro Amarilo">
+    <div class="overlay-top-left">PRJ_002</div>
+    <div class="overlay-bottom-right">INFRAESTRUCTURA</div>
+  </div>
+  <div class="proyecto-info">
+    <h3>CEDRO AMARILO</h3>
+    <p>Bogotá · 3,806 m²</p>
+    <button class="detalle" data-popup="popup-proyecto2">VER DETALLE +</button>
+  </div>
+</div>
+
+<!-- Proyecto 03 -->
+<div class="proyecto-card">
+  <div class="proyecto-img">
+    <img src="proy3.png" alt="Centrik Ingeurbe">
+    <div class="overlay-top-left">PRJ_003</div>
+    <div class="overlay-bottom-right">INFRAESTRUCTURA</div>
+  </div>
+  <div class="proyecto-info">
+    <h3>CENTRIK INGEURBE</h3>
+    <p>Bogotá · 4,400 m²</p>
+    <button class="detalle" data-popup="popup-proyecto3">VER DETALLE +</button>
+  </div>
+</div>
+
+<!-- Proyecto 04 -->
+<div class="proyecto-card">
+  <div class="proyecto-img">
+    <img src="proy4.png" alt="Madero Alcabama">
+    <div class="overlay-top-left">PRJ_004</div>
+    <div class="overlay-bottom-right">INFRAESTRUCTURA</div>
+  </div>
+  <div class="proyecto-info">
+    <h3>MADERO ALCABAMA</h3>
+    <p>Zipaquirá · 2,925 m²</p>
+    <button class="detalle" data-popup="popup-proyecto4">VER DETALLE +</button>
+  </div>
+</div>
+
+<!-- Proyecto 05 -->
+<div class="proyecto-card">
+  <div class="proyecto-img">
+    <img src="proy5.png" alt="Riviera Urbansa">
+    <div class="overlay-top-left">PRJ_005</div>
+    <div class="overlay-bottom-right">INFRAESTRUCTURA</div>
+  </div>
+  <div class="proyecto-info">
+    <h3>RIVIERA URBANSA</h3>
+    <p>Chía · 4,440 m²</p>
+    <button class="detalle" data-popup="popup-proyecto5">VER DETALLE +</button>
+  </div>
+</div>
+
+		<!-- Proyecto 06 -->
+<div class="proyecto-card">
+  <div class="proyecto-img">
+    <img src="proy6.png" alt="Casa Torres">
+    <div class="overlay-top-left">PRJ_006</div>
+    <div class="overlay-bottom-right">RESIDENCIAL</div>
+  </div>
+  <div class="proyecto-info">
+    <h3>CASA TORRES</h3>
+    <p>La Calera · 235 m²</p>
+    <button class="detalle" data-popup="popup-proyecto6">VER DETALLE +</button>
+  </div>
+</div>
+
+<!-- Proyecto 07 -->
+<div class="proyecto-card">
+  <div class="proyecto-img">
+    <img src="proy7.png" alt="Pizza House">
+    <div class="overlay-top-left">PRJ_007</div>
+    <div class="overlay-bottom-right">COMERCIAL</div>
+  </div>
+  <div class="proyecto-info">
+    <h3>PIZZA HOUSE</h3>
+    <p>Colombia · 6 sedes</p>
+    <button class="detalle" data-popup="popup-proyecto7">VER DETALLE +</button>
+  </div>
+</div>
+
+<!-- Proyecto 08 -->
+<div class="proyecto-card">
+  <div class="proyecto-img">
+    <img src="proy8.png" alt="ARA">
+    <div class="overlay-top-left">PRJ_008</div>
+    <div class="overlay-bottom-right">COMERCIAL</div>
+  </div>
+  <div class="proyecto-info">
+    <h3>ARA</h3>
+    <p>Colombia · 4 sedes</p>
+    <button class="detalle" data-popup="popup-proyecto8">VER DETALLE +</button>
+  </div>
+</div>
+
+<!-- Proyecto 09 -->
+<div class="proyecto-card">
+  <div class="proyecto-img">
+    <img src="proy9.png" alt="Necio">
+    <div class="overlay-top-left">PRJ_009</div>
+    <div class="overlay-bottom-right">COMERCIAL</div>
+  </div>
+  <div class="proyecto-info">
+    <h3>NECIO</h3>
+    <p>Colombia · 4 sedes</p>
+    <button class="detalle" data-popup="popup-proyecto9">VER DETALLE +</button>
+  </div>
+</div>
+
+<!-- Proyecto 10 -->
+<div class="proyecto-card">
+  <div class="proyecto-img">
+    <img src="proy10.png" alt="Éxito Centro Mayor">
+    <div class="overlay-top-left">PRJ_010</div>
+    <div class="overlay-bottom-right">COMERCIAL</div>
+  </div>
+  <div class="proyecto-info">
+    <h3>ÉXITO CENTRO MAYOR</h3>
+    <p>Bogotá · Retail</p>
+    <button class="detalle" data-popup="popup-proyecto10">VER DETALLE +</button>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</section>
+<!-- Popup Proyecto 01 -->
+<!-- Popup -->
+<div id="popup-proyecto1" class="popup-proyecto">
+  <div class="popup-proyecto-box">
+    <span class="popup-proyecto-close">&times;</span>
+
+    <div class="popup-proyecto-header">
+      <span class="popup-proyecto-code">PRJ_001</span>
+      <h2>JARDÍN INFANTIL J.A. SANTAMARÍA</h2>
+      <p class="popup-proyecto-subtitle">Bogotá · 1,747 m² · Institucional</p>
+    </div>
+
+    <div class="popup-proyecto-gallery">
+      <img src="proy1a.png" class="popup-proyecto-main" alt="Proyecto 1">
+      <div class="popup-proyecto-thumbs">
+        <img src="proy1a.png" alt="Vista 1">
+        <img src="proy1b.png" alt="Vista 2">
+        <img src="proy1c.png" alt="Vista 3">
+      </div>
+    </div>
+
+    <a href="#" class="popup-proyecto-cta">VER MÁS DETALLES →</a>
+  </div>
+</div>
+<!-- Popup Proyecto 02 -->
+<div id="popup-proyecto2" class="popup-proyecto">
+  <div class="popup-proyecto-box">
+    <span class="popup-proyecto-close">&times;</span>
+    <div class="popup-proyecto-header">
+      <span class="popup-proyecto-code">PRJ_002</span>
+      <h2>CEDRO AMARILO</h2>
+      <p class="popup-proyecto-subtitle">Bogotá · 3,806 m² · Infraestructura</p>
+    </div>
+    <div class="popup-proyecto-gallery">
+      <img src="proy2.png" class="popup-proyecto-main" alt="Cedro Amarilo">
+      <div class="popup-proyecto-thumbs">
+        <img src="proy2a.png" alt="Vista 1">
+        <img src="proy2b.png" alt="Vista 2">
+        <img src="proy2c.png" alt="Vista 3">
+      </div>
+    </div>
+    <a href="#" class="popup-proyecto-cta">VER MÁS DETALLES →</a>
+  </div>
+</div>
+
+<!-- Popup Proyecto 03 -->
+<div id="popup-proyecto3" class="popup-proyecto">
+  <div class="popup-proyecto-box">
+    <span class="popup-proyecto-close">&times;</span>
+    <div class="popup-proyecto-header">
+      <span class="popup-proyecto-code">PRJ_003</span>
+      <h2>CENTRIK INGEURBE</h2>
+      <p class="popup-proyecto-subtitle">Bogotá · 4,400 m² · Infraestructura</p>
+    </div>
+    <div class="popup-proyecto-gallery">
+      <img src="proy3.png" class="popup-proyecto-main" alt="Centrik Ingeurbe">
+      <div class="popup-proyecto-thumbs">
+        <img src="proy3a.png" alt="Vista 1">
+        <img src="proy3b.png" alt="Vista 2">
+        <img src="proy3c.png" alt="Vista 3">
+      </div>
+    </div>
+    <a href="#" class="popup-proyecto-cta">VER MÁS DETALLES →</a>
+  </div>
+</div>
+
+<!-- Popup Proyecto 04 -->
+<div id="popup-proyecto4" class="popup-proyecto">
+  <div class="popup-proyecto-box">
+    <span class="popup-proyecto-close">&times;</span>
+    <div class="popup-proyecto-header">
+      <span class="popup-proyecto-code">PRJ_004</span>
+      <h2>MADERO ALCABAMA</h2>
+      <p class="popup-proyecto-subtitle">Zipaquirá · 2,925 m² · Infraestructura</p>
+    </div>
+    <div class="popup-proyecto-gallery">
+      <img src="proy4.png" class="popup-proyecto-main" alt="Madero Alcabama">
+      <div class="popup-proyecto-thumbs">
+        <img src="proy4a.png" alt="Vista 1">
+        <img src="proy4b.png" alt="Vista 2">
+        <img src="proy4c.png" alt="Vista 3">
+      </div>
+    </div>
+    <a href="#" class="popup-proyecto-cta">VER MÁS DETALLES →</a>
+  </div>
+</div>
+
+<!-- Popup Proyecto 05 -->
+<div id="popup-proyecto5" class="popup-proyecto">
+  <div class="popup-proyecto-box">
+    <span class="popup-proyecto-close">&times;</span>
+    <div class="popup-proyecto-header">
+      <span class="popup-proyecto-code">PRJ_005</span>
+      <h2>RIVIERA URBANSA</h2>
+      <p class="popup-proyecto-subtitle">Chía · 4,440 m² · Infraestructura</p>
+    </div>
+    <div class="popup-proyecto-gallery">
+      <img src="proy5.png" class="popup-proyecto-main" alt="Riviera Urbansa">
+      <div class="popup-proyecto-thumbs">
+        <img src="proy5a.png" alt="Vista 1">
+        <img src="proy5b.png" alt="Vista 2">
+        <img src="proy5c.png" alt="Vista 3">
+      </div>
+    </div>
+    <a href="#" class="popup-proyecto-cta">VER MÁS DETALLES →</a>
+  </div>
+</div>
+
+<!-- Popup Proyecto 06 -->
+<div id="popup-proyecto6" class="popup-proyecto">
+  <div class="popup-proyecto-box">
+    <span class="popup-proyecto-close">&times;</span>
+    <div class="popup-proyecto-header">
+      <span class="popup-proyecto-code">PRJ_006</span>
+      <h2>CASA TORRES</h2>
+      <p class="popup-proyecto-subtitle">La Calera · 235 m² · Residencial</p>
+    </div>
+    <div class="popup-proyecto-gallery">
+      <img src="proy6.png" class="popup-proyecto-main" alt="Casa Torres">
+      <div class="popup-proyecto-thumbs">
+        <img src="proy6a.png" alt="Vista 1">
+        <img src="proy6b.png" alt="Vista 2">
+        <img src="proy6c.png" alt="Vista 3">
+      </div>
+    </div>
+    <a href="#" class="popup-proyecto-cta">VER MÁS DETALLES →</a>
+  </div>
+</div>
+
+<!-- Popup Proyecto 07 -->
+<div id="popup-proyecto7" class="popup-proyecto">
+  <div class="popup-proyecto-box">
+    <span class="popup-proyecto-close">&times;</span>
+    <div class="popup-proyecto-header">
+      <span class="popup-proyecto-code">PRJ_007</span>
+      <h2>PIZZA HOUSE</h2>
+      <p class="popup-proyecto-subtitle">Colombia · 6 sedes · Comercial</p>
+    </div>
+    <div class="popup-proyecto-gallery">
+      <img src="proy7.png" class="popup-proyecto-main" alt="Pizza House">
+      <div class="popup-proyecto-thumbs">
+        <img src="proy7a.png" alt="Vista 1">
+        <img src="proy7b.png" alt="Vista 2">
+        <img src="proy7c.png" alt="Vista 3">
+		<img src="proy7d.png" alt="Vista 4">
+        <img src="proy7e.png" alt="Vista 5">
+        <img src="proy7f.png" alt="Vista 6">
+      </div>
+    </div>
+    <a href="#" class="popup-proyecto-cta">VER MÁS DETALLES →</a>
+  </div>
+</div>
+
+<!-- Popup Proyecto 08 -->
+<div id="popup-proyecto8" class="popup-proyecto">
+  <div class="popup-proyecto-box">
+    <span class="popup-proyecto-close">&times;</span>
+    <div class="popup-proyecto-header">
+      <span class="popup-proyecto-code">PRJ_008</span>
+      <h2>ARA</h2>
+      <p class="popup-proyecto-subtitle">Colombia · 7 sedes · Comercial</p>
+    </div>
+    <div class="popup-proyecto-gallery">
+      <img src="proy8.png" class="popup-proyecto-main" alt="ARA">
+      <div class="popup-proyecto-thumbs">
+        <img src="proy8a.png" alt="Vista 1">
+        <img src="proy8b.png" alt="Vista 2">
+        <img src="proy8c.png" alt="Vista 3">
+      </div>
+    </div>
+    <a href="#" class="popup-proyecto-cta">VER MÁS DETALLES →</a>
+  </div>
+</div>
+
+<!-- Popup Proyecto 09 -->
+<div id="popup-proyecto9" class="popup-proyecto">
+  <div class="popup-proyecto-box">
+    <span class="popup-proyecto-close">&times;</span>
+    <div class="popup-proyecto-header">
+      <span class="popup-proyecto-code">PRJ_009</span>
+      <h2>NECIO</h2>
+      <p class="popup-proyecto-subtitle">Colombia · 4 sedes · Comercial</p>
+    </div>
+    <div class="popup-proyecto-gallery">
+      <img src="proy9.png" class="popup-proyecto-main" alt="Necio">
+      <div class="popup-proyecto-thumbs">
+        <img src="proy9a.png" alt="Vista 1">
+        <img src="proy9b.png" alt="Vista 2">
+        <img src="proy9c.png" alt="Vista 3">
+        <img src="proy9d.png" alt="Vista 4">
+      </div>
+    </div>
+    <a href="#" class="popup-proyecto-cta">VER MÁS DETALLES →</a>
+  </div>
+</div>
+<!-- Popup Proyecto 10 -->
+<div id="popup-proyecto10" class="popup-proyecto">
+  <div class="popup-proyecto-box">
+    <span class="popup-proyecto-close">&times;</span>
+
+    <div class="popup-proyecto-header">
+      <span class="popup-proyecto-code">PRJ_010</span>
+      <h2>ÉXITO CENTRO MAYOR</h2>
+      <p class="popup-proyecto-subtitle">Bogotá · Retail · Comercial</p>
+    </div>
+
+    <div class="popup-proyecto-gallery">
+      <img src="proy10.png" class="popup-proyecto-main" alt="Éxito Centro Mayor">
+      <div class="popup-proyecto-thumbs">
+        <img src="proy10a.png" alt="Vista 1">
+        <img src="proy10b.png" alt="Vista 2">
+        <img src="proy10c.png" alt="Vista 3">
+        <img src="proy10d.png" alt="Vista 4">
+      </div>
+    </div>
+
+    <a href="#" class="popup-proyecto-cta">VER MÁS DETALLES →</a>
+  </div>
+</div>
+
+
+<section id="cotizacion" class="section-container cotizacion-section">
+  <div class="section-header">
+    <span class="section-num">04 / COTIZACIÓN</span>
+    <h2>SOLICITA UNA COTIZACIÓN.</h2>
+  </div>
+
+    <p>Cuéntanos sobre tu proyecto y te respondemos con una propuesta técnica y comercial. Trabajamos en toda Colombia.</p>
+  <div class="cotizacion-content">
+    <!-- Columna izquierda -->
+    <div class="cotizacion-info">
+      <p><strong>EMAIL</strong><br>
+        <a href="mailto:proyectos@odc.com.co">proyectos@odc.com.co</a>
+      </p>
+      <p><strong>WHATSAPP</strong><br>
+        <a href="tel:+573222851592">+57 322 285 1592</a>
+      </p>
+      <p><strong>UBICACIÓN</strong><br>Bogotá, Colombia</p>
+      <p><strong>COBERTURA</strong><br>▪ Toda Colombia</p>
+    </div>
+
+    <!-- Columna derecha -->
+    <form class="cotizacion-form" id="formCotizacion">
+      <label>01 / NOMBRE</label>
+      <input type="text" name="nombre" required>
+
+      <label>02 / EMPRESA</label>
+      <input type="text" name="empresa">
+
+      <label>03 / EMAIL</label>
+      <input type="email" name="email" required>
+
+      <label>04 / TELÉFONO</label>
+      <input type="tel" name="telefono">
+
+      <label>05 / TIPO DE PROYECTO</label>
+      <input type="text" name="tipo">
+
+      <label>06 / DESCRIPCIÓN DEL PROYECTO</label>
+      <textarea name="descripcion" placeholder="Alcance, ubicación, plazos estimados…" required></textarea>
+
+      <button type="submit" class="cotizacion-submit">ENVIAR SOLICITUD</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <div class="cotizacion-footer">
+    <p>OAC OFICINA DE DISEÑO Y CONSTRUCCIÓN<br>© 2026 ODC S.A.S. / Bogotá, Colombia</p>
+    <div class="cotizacion-social">
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    </div>
+    <span class="cotizacion-status">▪ ACTIVO</span>
+  </div>
+</section>
+
+
+
+	
+<script>
+const hamburger = document.querySelector('.hamburger');
+const menu = document.querySelector('nav.menu');
+const body = document.querySelector('body');
+
+hamburger.addEventListener('click', () => {
+  const isActive = menu.classList.toggle('active');
+  
+  // Cambia el icono y el aria-label para accesibilidad
+  hamburger.textContent = isActive ? '✕' : '☰';
+  hamburger.setAttribute('aria-label', isActive ? 'Cerrar menú' : 'Abrir menú');
+  
+  // Bloquea el scroll del fondo cuando el menú está abierto
+  body.style.overflow = isActive ? 'hidden' : 'auto';
+});
+
+// Cerrar menú al hacer click en un enlace
+document.querySelectorAll('nav.menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      menu.classList.remove('active');
+      hamburger.textContent = '☰';
+      body.style.overflow = 'auto';
+    }
+  });
+});
+  // Rotación automática de slides
+  const slides = document.querySelectorAll('.hero-slide');
+  let current = 0;
+  setInterval(()=>{
+    slides[current].classList.remove('active');
+    current = (current+1) % slides.length;
+    slides[current].classList.add('active');
+  },6000);
+
+  // Contadores animados
+  const counters = document.querySelectorAll('.counter');
+  const options = {threshold:0.5};
+  const animateCounter = (counter) => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+    const increment = target / 100; // velocidad
+    const update = () => {
+      count += increment;
+      if(count < target){
+        counter.textContent = Math.floor(count);
+        requestAnimationFrame(update);
+      } else {
+        counter.textContent = target + '+';
+      }
+    };
+    update();
+  };
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  },options);
+  counters.forEach(c=>observer.observe(c));
+	// --- Carrusel infinito ---
+const track = document.querySelector('.track');
+const carousel = document.querySelector('.carousel');
+
+// Pausar carrusel al hover
+carousel.addEventListener('mouseenter', () => {
+  track.style.animationPlayState = 'paused';
+});
+carousel.addEventListener('mouseleave', () => {
+  track.style.animationPlayState = 'running';
+});
+// Función para abrir popup
+function openPopup(id) {
+  const popup = document.getElementById(id);
+  if (popup) {
+    popup.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // bloquea scroll de la página
+  }
+}
+
+// Función para cerrar popup
+function closePopup(popup) {
+  popup.style.display = 'none';
+  document.body.style.overflow = ''; // restaura scroll de la página
+}
+
+// Abrir popup al dar clic en botón detalle
+document.querySelectorAll('.detalle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.getAttribute('data-popup');
+    openPopup(id);
+  });
+});
+
+// Cerrar popup con ✕
+document.querySelectorAll('.popup .close').forEach(close => {
+  close.addEventListener('click', () => {
+    closePopup(close.closest('.popup'));
+  });
+});
+
+// Cerrar popup al hacer clic fuera del contenido
+document.querySelectorAll('.popup').forEach(p => {
+  p.addEventListener('click', e => {
+    if (e.target === p) closePopup(p);
+  });
+});
+
+// Cerrar popup con tecla ESC
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.popup').forEach(p => {
+      if (p.style.display === 'flex') closePopup(p);
+    });
+  }
+});
+
+// Cerrar popup con botón "volver/regresar"
+document.querySelectorAll('.popup .back').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const popup = btn.closest('.popup');
+    closePopup(popup);
+    history.back(); // opcional: usar historial de navegación
+  });
+});
+
+// Abrir imagen grande al clic en miniatura
+document.querySelectorAll('.thumbs img').forEach(thumb => {
+  thumb.addEventListener('click', () => {
+    const src = thumb.getAttribute('src');
+    const modalImg = document.createElement('div');
+    modalImg.className = 'img-modal';
+    modalImg.innerHTML = `
+      <div class="img-box">
+        <img src="${src}">
+        <span class="img-close">&times;</span>
+      </div>`;
+    document.body.appendChild(modalImg);
+    document.body.style.overflow = 'hidden';
+
+    // Cerrar modal de imagen
+    modalImg.querySelector('.img-close').addEventListener('click', () => {
+      modalImg.remove();
+      document.body.style.overflow = '';
+    });
+    modalImg.addEventListener('click', e => {
+      if (e.target === modalImg) {
+        modalImg.remove();
+        document.body.style.overflow = '';
+      }
+    });
+  });
+});
+
+
+	
+	
+
+
+
+
+
+// Abrir popup
+document.querySelectorAll('.btn-proyecto').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const targetId = btn.getAttribute('data-popup');
+    const popup = document.getElementById(targetId);
+    if(popup){
+      popup.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // bloquea scroll de fondo
+    }
+  });
+});
+
+// Cerrar popup con la X
+document.querySelectorAll('.popup-proyecto-close').forEach(closeBtn => {
+  closeBtn.addEventListener('click', () => {
+    const popup = closeBtn.closest('.popup-proyecto');
+    popup.style.display = 'none';
+    document.body.style.overflow = ''; // restaura scroll
+  });
+});
+
+// Cerrar popup al hacer clic fuera del contenido
+document.querySelectorAll('.popup-proyecto').forEach(popup => {
+  popup.addEventListener('click', e => {
+    if(e.target === popup){
+      popup.style.display = 'none';
+      document.body.style.overflow = ''; // restaura scroll
+    }
+  });
+});
+
+// Galería: miniaturas SOLO cambian la imagen principal
+document.querySelectorAll('.popup-proyecto-gallery').forEach(gallery => {
+  const mainImg = gallery.querySelector('.popup-proyecto-main');
+  const thumbs = gallery.querySelectorAll('.popup-proyecto-thumbs img');
+  
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', e => {
+      e.preventDefault();
+      mainImg.src = thumb.src; // reemplaza la imagen principal
+    });
+  });
+});
+
+
+	
+	
+	document.getElementById('formCotizacion').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  // Captura de datos
+  const datos = {
+    nombre: this.nombre.value,
+    empresa: this.empresa.value,
+    email: this.email.value,
+    telefono: this.telefono.value,
+    tipo: this.tipo.value,
+    descripcion: this.descripcion.value
+  };
+
+  // Aquí puedes integrar con tu backend o servicio de correo
+  console.log("Solicitud enviada:", datos);
+
+  alert("Tu solicitud ha sido enviada. Nos pondremos en contacto pronto.");
+  this.reset();
+});
+
+</script>
+
+
+</body></html>
